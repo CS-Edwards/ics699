@@ -1,0 +1,129 @@
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">API reference</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../series.html">Series</a></li>
+<li aria-current="page" class="breadcrumb-item active">pandas.Serie...</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="pandas-series-product">
+<h1>pandas.Series.product<a class="headerlink" href="#pandas-series-product" title="Link to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="pandas.Series.product">
+<span class="sig-prename descclassname"><span class="pre">Series.</span></span><span class="sig-name descname"><span class="pre">product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skipna</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numeric_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v2.2.0/pandas/core/series.py#L6510-L6519"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.Series.product" title="Link to this definition">#</a></dt>
+<dd><p>Return the product of the values over the requested axis.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>axis</strong><span class="classifier">{index (0)}</span></dt><dd><p>Axis for the function to be applied on.
+For <cite>Series</cite> this parameter is unused and defaults to 0.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The behavior of DataFrame.prod with <code class="docutils literal notranslate"><span class="pre">axis=None</span></code> is deprecated,
+in a future version this will reduce over both axes and return a scalar
+To retain the old behavior, pass axis=0 (or do not pass axis).</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.0.0.</span></p>
+</div>
+</dd>
+<dt><strong>skipna</strong><span class="classifier">bool, default True</span></dt><dd><p>Exclude NA/null values when computing the result.</p>
+</dd>
+<dt><strong>numeric_only</strong><span class="classifier">bool, default False</span></dt><dd><p>Include only float, int, boolean columns. Not implemented for Series.</p>
+</dd>
+<dt><strong>min_count</strong><span class="classifier">int, default 0</span></dt><dd><p>The required number of valid values to perform the operation. If fewer than
+<code class="docutils literal notranslate"><span class="pre">min_count</span></code> non-NA values are present the result will be NA.</p>
+</dd>
+<dt><strong>**kwargs</strong></dt><dd><p>Additional keyword arguments to be passed to the function.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>scalar or scalar</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="pandas.Series.sum.html#pandas.Series.sum" title="pandas.Series.sum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series.sum</span></code></a></dt><dd><p>Return the sum.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.Series.min.html#pandas.Series.min" title="pandas.Series.min"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series.min</span></code></a></dt><dd><p>Return the minimum.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.Series.max.html#pandas.Series.max" title="pandas.Series.max"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series.max</span></code></a></dt><dd><p>Return the maximum.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.Series.idxmin.html#pandas.Series.idxmin" title="pandas.Series.idxmin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series.idxmin</span></code></a></dt><dd><p>Return the index of the minimum.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.Series.idxmax.html#pandas.Series.idxmax" title="pandas.Series.idxmax"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series.idxmax</span></code></a></dt><dd><p>Return the index of the maximum.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.DataFrame.sum.html#pandas.DataFrame.sum" title="pandas.DataFrame.sum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame.sum</span></code></a></dt><dd><p>Return the sum over the requested axis.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.DataFrame.min.html#pandas.DataFrame.min" title="pandas.DataFrame.min"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame.min</span></code></a></dt><dd><p>Return the minimum over the requested axis.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.DataFrame.max.html#pandas.DataFrame.max" title="pandas.DataFrame.max"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame.max</span></code></a></dt><dd><p>Return the maximum over the requested axis.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.DataFrame.idxmin.html#pandas.DataFrame.idxmin" title="pandas.DataFrame.idxmin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame.idxmin</span></code></a></dt><dd><p>Return the index of the minimum over the requested axis.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.DataFrame.idxmax.html#pandas.DataFrame.idxmax" title="pandas.DataFrame.idxmax"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame.idxmax</span></code></a></dt><dd><p>Return the index of the maximum over the requested axis.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<p>By default, the product of an empty or all-NA Series is <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">"float64"</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span>
+<span class="go">1.0</span>
+</pre></div>
+</div>
+<p>This can be controlled with the <code class="docutils literal notranslate"><span class="pre">min_count</span></code> parameter</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">"float64"</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">min_count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">nan</span>
+</pre></div>
+</div>
+<p>Thanks to the <code class="docutils literal notranslate"><span class="pre">skipna</span></code> parameter, <code class="docutils literal notranslate"><span class="pre">min_count</span></code> handles all-NA and
+empty series identically.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">])</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span>
+<span class="go">1.0</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">])</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">min_count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">nan</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+</article>
+<footer class="prev-next-footer">
+<div class="prev-next-area">
+<a class="left-prev" href="pandas.Series.eq.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">pandas.Series.eq</p>
+</div>
+</a>
+<a class="right-next" href="pandas.Series.dot.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">pandas.Series.dot</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>

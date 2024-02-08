@@ -1,0 +1,1 @@
+"{   \"name\": \"pandas.DataFrame.axes\",   \"api_name\": \"pandas.DataFrame.axes\",   \"description\": \"Return a list representing the axes of the DataFrame. It has the row axis labels and column axis labels as the only members. They are returned in that order.\",   \"parameters\": {     \"required\": [],     \"optional\": []   } }"

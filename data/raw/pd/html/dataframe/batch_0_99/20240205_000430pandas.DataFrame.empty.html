@@ -1,0 +1,107 @@
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">API reference</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../frame.html">DataFrame</a></li>
+<li aria-current="page" class="breadcrumb-item active">pandas.DataF...</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="pandas-dataframe-empty">
+<h1>pandas.DataFrame.empty<a class="headerlink" href="#pandas-dataframe-empty" title="Link to this heading">#</a></h1>
+<dl class="py property">
+<dt class="sig sig-object py" id="pandas.DataFrame.empty">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">DataFrame.</span></span><span class="sig-name descname"><span class="pre">empty</span></span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v2.2.0/pandas/core/generic.py#L2081-L2139"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.DataFrame.empty" title="Link to this definition">#</a></dt>
+<dd><p>Indicator whether Series/DataFrame is empty.</p>
+<p>True if Series/DataFrame is entirely empty (no items), meaning any of the
+axes are of length 0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>bool</dt><dd><p>If Series/DataFrame is empty, return True, if not return False.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="pandas.Series.dropna.html#pandas.Series.dropna" title="pandas.Series.dropna"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series.dropna</span></code></a></dt><dd><p>Return series without null values.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.DataFrame.dropna.html#pandas.DataFrame.dropna" title="pandas.DataFrame.dropna"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame.dropna</span></code></a></dt><dd><p>Return DataFrame with labels on given axis omitted where (all or any) data are missing.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>If Series/DataFrame contains only NaNs, it is still not considered empty. See
+the example below.</p>
+<p class="rubric">Examples</p>
+<p>An example of an actual empty DataFrame. Notice the index is empty:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df_empty</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'A'</span> <span class="p">:</span> <span class="p">[]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df_empty</span>
+<span class="go">Empty DataFrame</span>
+<span class="go">Columns: [A]</span>
+<span class="go">Index: []</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df_empty</span><span class="o">.</span><span class="n">empty</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>If we only have NaNs in our DataFrame, it is not considered empty! We
+will need to drop the NaNs to make the DataFrame empty:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'A'</span> <span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">    A</span>
+<span class="go">0 NaN</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">empty</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">empty</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ser_empty</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s1">'A'</span> <span class="p">:</span> <span class="p">[]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ser_empty</span>
+<span class="go">A    []</span>
+<span class="go">dtype: object</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ser_empty</span><span class="o">.</span><span class="n">empty</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ser_empty</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ser_empty</span><span class="o">.</span><span class="n">empty</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+</article>
+<footer class="prev-next-footer">
+<div class="prev-next-area">
+<a class="left-prev" href="pandas.DataFrame.memory_usage.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">pandas.DataFrame.memory_usage</p>
+</div>
+</a>
+<a class="right-next" href="pandas.DataFrame.set_flags.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">pandas.DataFrame.set_flags</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>

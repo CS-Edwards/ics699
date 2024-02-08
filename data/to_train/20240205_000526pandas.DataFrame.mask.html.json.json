@@ -1,0 +1,36 @@
+{
+    "Instruction": "To replace values where the condition is True, use the DataFrame.mask() function.",
+    "Function": {
+      "name": "DataFrame.mask",
+      "api_name": "DataFrame.mask",
+      "description": "Replace values where the condition is True.",
+      "parameters": {
+        "required": [
+          {
+            "name": "cond",
+            "description": "bool Series/DataFrame, array-like, or callable\n\nWhere cond is False, keep the original value. Where\nTrue, replace with corresponding value from other.\nIf cond is callable, it is computed on the Series/DataFrame and\nshould return boolean Series/DataFrame or array. The callable must\nnot change input Series/DataFrame (though pandas doesn’t check it)."
+          }
+        ],
+        "optional": [
+          {
+            "name": "other",
+            "description": "scalar, Series/DataFrame, or callable\n\nEntries where cond is True are replaced with\ncorresponding value from other.\nIf other is callable, it is computed on the Series/DataFrame and\nshould return scalar or Series/DataFrame. The callable must not\nchange input Series/DataFrame (though pandas doesn’t check it).\nIf not specified, entries will be filled with the corresponding\nNULL value (np.nan for numpy dtypes, pd.NA for extension\ndtypes)."
+          },
+          {
+            "name": "inplace",
+            "description": "bool, default False\n\nWhether to perform the operation in place on the data."
+          },
+          {
+            "name": "axis",
+            "description": "int, default None\n\nAlignment axis if needed. For Series this parameter is\nunused and defaults to 0."
+          },
+          {
+            "name": "level",
+            "description": "int, default None\n\nAlignment level if needed."
+          }
+        ]
+      }
+    },
+    "Output": "DataFrame.mask(cond=[cond_values])"
+  }
+  

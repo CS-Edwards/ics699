@@ -1,0 +1,114 @@
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">API reference</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../frame.html">DataFrame</a></li>
+<li aria-current="page" class="breadcrumb-item active">pandas.DataF...</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="pandas-dataframe-itertuples">
+<h1>pandas.DataFrame.itertuples<a class="headerlink" href="#pandas-dataframe-itertuples" title="Link to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="pandas.DataFrame.itertuples">
+<span class="sig-prename descclassname"><span class="pre">DataFrame.</span></span><span class="sig-name descname"><span class="pre">itertuples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Pandas'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v2.2.0/pandas/core/frame.py#L1547-L1629"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.DataFrame.itertuples" title="Link to this definition">#</a></dt>
+<dd><p>Iterate over DataFrame rows as namedtuples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>index</strong><span class="classifier">bool, default True</span></dt><dd><p>If True, return the index as the first element of the tuple.</p>
+</dd>
+<dt><strong>name</strong><span class="classifier">str or None, default âPandasâ</span></dt><dd><p>The name of the returned namedtuples or None to return regular
+tuples.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>iterator</dt><dd><p>An object to iterate over namedtuples for each row in the
+DataFrame with the first field possibly being the index and
+following fields being the column values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="pandas.DataFrame.iterrows.html#pandas.DataFrame.iterrows" title="pandas.DataFrame.iterrows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame.iterrows</span></code></a></dt><dd><p>Iterate over DataFrame rows as (index, Series) pairs.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.DataFrame.items.html#pandas.DataFrame.items" title="pandas.DataFrame.items"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame.items</span></code></a></dt><dd><p>Iterate over (column name, Series) pairs.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The column names will be renamed to positional names if they are
+invalid Python identifiers, repeated, or start with an underscore.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'num_legs'</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s1">'num_wings'</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]},</span>
+<span class="gp">... </span>                  <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">'dog'</span><span class="p">,</span> <span class="s1">'hawk'</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">      num_legs  num_wings</span>
+<span class="go">dog          4          0</span>
+<span class="go">hawk         2          2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">itertuples</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">Pandas(Index='dog', num_legs=4, num_wings=0)</span>
+<span class="go">Pandas(Index='hawk', num_legs=2, num_wings=2)</span>
+</pre></div>
+</div>
+<p>By setting the <cite>index</cite> parameter to False we can remove the index
+as the first element of the tuple:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">itertuples</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">Pandas(num_legs=4, num_wings=0)</span>
+<span class="go">Pandas(num_legs=2, num_wings=2)</span>
+</pre></div>
+</div>
+<p>With the <cite>name</cite> parameter set we set a custom name for the yielded
+namedtuples:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">itertuples</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Animal'</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">Animal(Index='dog', num_legs=4, num_wings=0)</span>
+<span class="go">Animal(Index='hawk', num_legs=2, num_wings=2)</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+</article>
+<footer class="prev-next-footer">
+<div class="prev-next-area">
+<a class="left-prev" href="pandas.DataFrame.iterrows.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">pandas.DataFrame.iterrows</p>
+</div>
+</a>
+<a class="right-next" href="pandas.DataFrame.pop.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">pandas.DataFrame.pop</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>

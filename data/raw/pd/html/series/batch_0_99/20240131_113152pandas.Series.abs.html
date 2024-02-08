@@ -1,0 +1,116 @@
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">API reference</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../series.html">Series</a></li>
+<li aria-current="page" class="breadcrumb-item active">pandas.Series.abs</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="pandas-series-abs">
+<h1>pandas.Series.abs<a class="headerlink" href="#pandas-series-abs" title="Link to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="pandas.Series.abs">
+<span class="sig-prename descclassname"><span class="pre">Series.</span></span><span class="sig-name descname"><span class="pre">abs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v2.2.0/pandas/core/generic.py#L1650-L1721"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.Series.abs" title="Link to this definition">#</a></dt>
+<dd><p>Return a Series/DataFrame with absolute numeric value of each element.</p>
+<p>This function only applies to elements that are all numeric.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>abs</dt><dd><p>Series/DataFrame containing the absolute value of each element.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.absolute.html#numpy.absolute" title="(in NumPy v1.26)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.absolute</span></code></a></dt><dd><p>Calculate the absolute value element-wise.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">complex</span></code> inputs, <code class="docutils literal notranslate"><span class="pre">1.2</span> <span class="pre">+</span> <span class="pre">1j</span></code>, the absolute value is
+<span class="math notranslate nohighlight">\(\sqrt{ a^2 + b^2 }\)</span>.</p>
+<p class="rubric">Examples</p>
+<p>Absolute numeric values in a Series.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="o">-</span><span class="mf">1.10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.33</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
+<span class="go">0    1.10</span>
+<span class="go">1    2.00</span>
+<span class="go">2    3.33</span>
+<span class="go">3    4.00</span>
+<span class="go">dtype: float64</span>
+</pre></div>
+</div>
+<p>Absolute numeric values in a Series with complex numbers.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">1.2</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
+<span class="go">0    1.56205</span>
+<span class="go">dtype: float64</span>
+</pre></div>
+</div>
+<p>Absolute numeric values in a Series with a Timedelta element.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="s1">'1 days'</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
+<span class="go">0   1 days</span>
+<span class="go">dtype: timedelta64[ns]</span>
+</pre></div>
+</div>
+<p>Select rows with data closest to certain value using argsort (from
+<a class="reference external" href="https://stackoverflow.com/a/17758115">StackOverflow</a>).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<span class="gp">... </span>    <span class="s1">'a'</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s1">'b'</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s1">'c'</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">     a    b    c</span>
+<span class="go">0    4   10  100</span>
+<span class="go">1    5   20   50</span>
+<span class="go">2    6   30  -30</span>
+<span class="go">3    7   40  -50</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">c</span> <span class="o">-</span> <span class="mi">43</span><span class="p">)</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">argsort</span><span class="p">()]</span>
+<span class="go">     a    b    c</span>
+<span class="go">1    5   20   50</span>
+<span class="go">0    4   10  100</span>
+<span class="go">2    6   30  -30</span>
+<span class="go">3    7   40  -50</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+</article>
+<footer class="prev-next-footer">
+<div class="prev-next-area">
+<a class="left-prev" href="pandas.Series.pipe.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">pandas.Series.pipe</p>
+</div>
+</a>
+<a class="right-next" href="pandas.Series.all.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">pandas.Series.all</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>

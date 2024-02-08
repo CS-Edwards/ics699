@@ -1,0 +1,125 @@
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">API reference</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../series.html">Series</a></li>
+<li aria-current="page" class="breadcrumb-item active">pandas.Series.agg</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="pandas-series-agg">
+<h1>pandas.Series.agg<a class="headerlink" href="#pandas-series-agg" title="Link to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="pandas.Series.agg">
+<span class="sig-prename descclassname"><span class="pre">Series.</span></span><span class="sig-name descname"><span class="pre">agg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v2.2.0/pandas/core/series.py#L4730-L4747"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.Series.agg" title="Link to this definition">#</a></dt>
+<dd><p>Aggregate using one or more operations over the specified axis.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>func</strong><span class="classifier">function, str, list or dict</span></dt><dd><p>Function to use for aggregating the data. If a function, must either
+work when passed a Series or when passed to Series.apply.</p>
+<p>Accepted combinations are:</p>
+<ul class="simple">
+<li><p>function</p></li>
+<li><p>string function name</p></li>
+<li><p>list of functions and/or function names, e.g. <code class="docutils literal notranslate"><span class="pre">[np.sum,</span> <span class="pre">'mean']</span></code></p></li>
+<li><p>dict of axis labels -&gt; functions, function names or list of such.</p></li>
+</ul>
+</dd>
+<dt><strong>axis</strong><span class="classifier">{0 or âindexâ}</span></dt><dd><p>Unused. Parameter needed for compatibility with DataFrame.</p>
+</dd>
+<dt><strong>*args</strong></dt><dd><p>Positional arguments to pass to <cite>func</cite>.</p>
+</dd>
+<dt><strong>**kwargs</strong></dt><dd><p>Keyword arguments to pass to <cite>func</cite>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>scalar, Series or DataFrame</dt><dd><p>The return can be:</p>
+<ul class="simple">
+<li><p>scalar : when Series.agg is called with single function</p></li>
+<li><p>Series : when DataFrame.agg is called with a single function</p></li>
+<li><p>DataFrame : when DataFrame.agg is called with several functions</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="pandas.Series.apply.html#pandas.Series.apply" title="pandas.Series.apply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series.apply</span></code></a></dt><dd><p>Invoke function on a Series.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.Series.transform.html#pandas.Series.transform" title="pandas.Series.transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series.transform</span></code></a></dt><dd><p>Transform function producing a Series with like indexes.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The aggregation operations are always performed over an axis, either the
+index (default) or the column axis. This behavior is different from
+<cite>numpy</cite> aggregation functions (<cite>mean</cite>, <cite>median</cite>, <cite>prod</cite>, <cite>sum</cite>, <cite>std</cite>,
+<cite>var</cite>), where the default is to compute the aggregation of the flattened
+array, e.g., <code class="docutils literal notranslate"><span class="pre">numpy.mean(arr_2d)</span></code> as opposed to
+<code class="docutils literal notranslate"><span class="pre">numpy.mean(arr_2d,</span> <span class="pre">axis=0)</span></code>.</p>
+<p><cite>agg</cite> is an alias for <cite>aggregate</cite>. Use the alias.</p>
+<p>Functions that mutate the passed object can produce unexpected
+behavior or errors and are not supported. See <a class="reference internal" href="../../user_guide/gotchas.html#gotchas-udf-mutation"><span class="std std-ref">Mutating with User Defined Function (UDF) methods</span></a>
+for more details.</p>
+<p>A passed user-defined-function will be passed a Series for evaluation.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+<span class="go">0    1</span>
+<span class="go">1    2</span>
+<span class="go">2    3</span>
+<span class="go">3    4</span>
+<span class="go">dtype: int64</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="s1">'min'</span><span class="p">)</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">'min'</span><span class="p">,</span> <span class="s1">'max'</span><span class="p">])</span>
+<span class="go">min   1</span>
+<span class="go">max   4</span>
+<span class="go">dtype: int64</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+</article>
+<footer class="prev-next-footer">
+<div class="prev-next-area">
+<a class="left-prev" href="pandas.Series.apply.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">pandas.Series.apply</p>
+</div>
+</a>
+<a class="right-next" href="pandas.Series.aggregate.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">pandas.Series.aggregate</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>

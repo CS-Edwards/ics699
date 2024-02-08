@@ -1,0 +1,130 @@
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">API reference</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../series.html">Series</a></li>
+<li aria-current="page" class="breadcrumb-item active">pandas.Series.map</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="pandas-series-map">
+<h1>pandas.Series.map<a class="headerlink" href="#pandas-series-map" title="Link to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="pandas.Series.map">
+<span class="sig-prename descclassname"><span class="pre">Series.</span></span><span class="sig-name descname"><span class="pre">map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na_action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v2.2.0/pandas/core/series.py#L4600-L4683"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.Series.map" title="Link to this definition">#</a></dt>
+<dd><p>Map values of Series according to an input mapping or function.</p>
+<p>Used for substituting each value in a Series with another value,
+that may be derived from a function, a <code class="docutils literal notranslate"><span class="pre">dict</span></code> or
+a <a class="reference internal" href="pandas.Series.html#pandas.Series" title="pandas.Series"><code class="xref py py-class docutils literal notranslate"><span class="pre">Series</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>arg</strong><span class="classifier">function, collections.abc.Mapping subclass or Series</span></dt><dd><p>Mapping correspondence.</p>
+</dd>
+<dt><strong>na_action</strong><span class="classifier">{None, âignoreâ}, default None</span></dt><dd><p>If âignoreâ, propagate NaN values, without passing them to the
+mapping correspondence.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>Series</dt><dd><p>Same index as caller.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="pandas.Series.apply.html#pandas.Series.apply" title="pandas.Series.apply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series.apply</span></code></a></dt><dd><p>For applying more complex functions on a Series.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.Series.replace.html#pandas.Series.replace" title="pandas.Series.replace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series.replace</span></code></a></dt><dd><p>Replace values given in <cite>to_replace</cite> with <cite>value</cite>.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.DataFrame.apply.html#pandas.DataFrame.apply" title="pandas.DataFrame.apply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame.apply</span></code></a></dt><dd><p>Apply a function row-/column-wise.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.DataFrame.map.html#pandas.DataFrame.map" title="pandas.DataFrame.map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame.map</span></code></a></dt><dd><p>Apply a function elementwise on a whole DataFrame.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">arg</span></code> is a dictionary, values in Series that are not in the
+dictionary (as keys) are converted to <code class="docutils literal notranslate"><span class="pre">NaN</span></code>. However, if the
+dictionary is a <code class="docutils literal notranslate"><span class="pre">dict</span></code> subclass that defines <code class="docutils literal notranslate"><span class="pre">__missing__</span></code> (i.e.
+provides a method for default values), then this default is used
+rather than <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">'cat'</span><span class="p">,</span> <span class="s1">'dog'</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">'rabbit'</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+<span class="go">0      cat</span>
+<span class="go">1      dog</span>
+<span class="go">2      NaN</span>
+<span class="go">3   rabbit</span>
+<span class="go">dtype: object</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">map</span></code> accepts a <code class="docutils literal notranslate"><span class="pre">dict</span></code> or a <code class="docutils literal notranslate"><span class="pre">Series</span></code>. Values that are not found
+in the <code class="docutils literal notranslate"><span class="pre">dict</span></code> are converted to <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, unless the dict has a default
+value (e.g. <code class="docutils literal notranslate"><span class="pre">defaultdict</span></code>):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s1">'cat'</span><span class="p">:</span> <span class="s1">'kitten'</span><span class="p">,</span> <span class="s1">'dog'</span><span class="p">:</span> <span class="s1">'puppy'</span><span class="p">})</span>
+<span class="go">0   kitten</span>
+<span class="go">1    puppy</span>
+<span class="go">2      NaN</span>
+<span class="go">3      NaN</span>
+<span class="go">dtype: object</span>
+</pre></div>
+</div>
+<p>It also accepts a function:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s1">'I am a </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+<span class="go">0       I am a cat</span>
+<span class="go">1       I am a dog</span>
+<span class="go">2       I am a nan</span>
+<span class="go">3    I am a rabbit</span>
+<span class="go">dtype: object</span>
+</pre></div>
+</div>
+<p>To avoid applying the function to missing values (and keep them as
+<code class="docutils literal notranslate"><span class="pre">NaN</span></code>) <code class="docutils literal notranslate"><span class="pre">na_action='ignore'</span></code> can be used:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s1">'I am a </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">,</span> <span class="n">na_action</span><span class="o">=</span><span class="s1">'ignore'</span><span class="p">)</span>
+<span class="go">0     I am a cat</span>
+<span class="go">1     I am a dog</span>
+<span class="go">2            NaN</span>
+<span class="go">3  I am a rabbit</span>
+<span class="go">dtype: object</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+</article>
+<footer class="prev-next-footer">
+<div class="prev-next-area">
+<a class="left-prev" href="pandas.Series.transform.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">pandas.Series.transform</p>
+</div>
+</a>
+<a class="right-next" href="pandas.Series.groupby.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">pandas.Series.groupby</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>

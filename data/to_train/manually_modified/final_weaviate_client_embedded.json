@@ -1,0 +1,51 @@
+{
+    "Instruction": "I want to create an embedded weaviate client on port 8080 with grpc port 50051",
+    "Function": {
+      "name": "connect_to_embedded",
+      "api_name": "connect_to_embedded",
+      "description": "Connect to an embedded Weaviate instance.\n\nThis method handles automatically connecting to Weaviate but not automatically closing the connection. Once you are done with the client\nyou should call `client.close()` to close the connection and free up resources. Alternatively, you can use the client as a context manager\nin a `with` statement, which will automatically close the connection when the context is exited. See the examples below for details.\n\nSee [the docs](https://weaviate.io/developers/weaviate/installation/embedded#embedded-options) for more details.",
+      "parameters": {
+        "optional": [
+          {
+            "name": "hostname",
+            "description": "The hostname to use for the underlying REST & GraphQL API calls."
+          },
+          {
+            "name": "port",
+            "description": "The port to use for the underlying REST and GraphQL API calls."
+          },
+          {
+            "name": "grpc_port",
+            "description": "The port to use for the underlying gRPC API."
+          },      
+        
+          {
+            "name": "headers",
+            "description": "Additional headers to include in the requests, e.g. API keys for Cloud vectorization."
+          },
+          {
+            "name": "additional_config",
+            "description": "This includes many additional, rarely used config options. use wvc.init.AdditionalConfig() to configure."
+          },
+          {
+            "name": "version",
+            "description": "Weaviate version to be used for the embedded instance."
+          },
+          {
+            "name": "persistence_data_path",
+            "description": "Directory where the files making up the database are stored.\nWhen the XDG_DATA_HOME env variable is set, the default value is: `XDG_DATA_HOME/weaviate/`\nOtherwise it is: `~/.local/share/weaviate`"
+          },
+          {
+            "name": "binary_path",
+            "description": "Directory where to download the binary. If deleted, the client will download the binary again.\nWhen the XDG_CACHE_HOME env variable is set, the default value is: `XDG_CACHE_HOME/weaviate-embedded/`\nOtherwise it is: `~/.cache/weaviate-embedded`"
+          },
+          {
+            "name": "environment_variables",
+            "description": "Additional environment variables to be passed to the embedded instance for configuration."
+          }
+        ]
+      }
+    },
+    "Output": "client = weaviate.connect_to_embedded( port=8080, grpc_port=50051)"
+  }
+  

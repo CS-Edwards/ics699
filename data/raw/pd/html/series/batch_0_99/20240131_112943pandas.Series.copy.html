@@ -1,0 +1,192 @@
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">API reference</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../series.html">Series</a></li>
+<li aria-current="page" class="breadcrumb-item active">pandas.Series.copy</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="pandas-series-copy">
+<h1>pandas.Series.copy<a class="headerlink" href="#pandas-series-copy" title="Link to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="pandas.Series.copy">
+<span class="sig-prename descclassname"><span class="pre">Series.</span></span><span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v2.2.0/pandas/core/generic.py#L6656-L6809"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.Series.copy" title="Link to this definition">#</a></dt>
+<dd><p>Make a copy of this objectâs indices and data.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">deep=True</span></code> (default), a new object will be created with a
+copy of the calling objectâs data and indices. Modifications to
+the data or indices of the copy will not be reflected in the
+original object (see notes below).</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">deep=False</span></code>, a new object will be created without copying
+the calling objectâs data or index (only references to the data
+and index are copied). Any changes to the data of the original
+will be reflected in the shallow copy (and vice versa).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">deep=False</span></code> behaviour as described above will change
+in pandas 3.0. <a class="reference external" href="https://pandas.pydata.org/docs/dev/user_guide/copy_on_write.html">Copy-on-Write</a>
+will be enabled by default, which means that the âshallowâ copy
+is that is returned with <code class="docutils literal notranslate"><span class="pre">deep=False</span></code> will still avoid making
+an eager copy, but changes to the data of the original will <em>no</em>
+longer be reflected in the shallow copy (or vice versa). Instead,
+it makes use of a lazy (deferred) copy mechanism that will copy
+the data only when any changes to the original or shallow copy is
+made.</p>
+<p>You can already get the future behavior and improvements through
+enabling copy on write <code class="docutils literal notranslate"><span class="pre">pd.options.mode.copy_on_write</span> <span class="pre">=</span> <span class="pre">True</span></code></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>deep</strong><span class="classifier">bool, default True</span></dt><dd><p>Make a deep copy, including a copy of the data and the indices.
+With <code class="docutils literal notranslate"><span class="pre">deep=False</span></code> neither the indices nor the data are copied.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>Series or DataFrame</dt><dd><p>Object type matches caller.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">deep=True</span></code>, data is copied but actual Python objects
+will not be copied recursively, only the reference to the object.
+This is in contrast to <cite>copy.deepcopy</cite> in the Standard Library,
+which recursively copies object data (see examples below).</p>
+<p>While <code class="docutils literal notranslate"><span class="pre">Index</span></code> objects are copied when <code class="docutils literal notranslate"><span class="pre">deep=True</span></code>, the underlying
+numpy array is not copied for performance reasons. Since <code class="docutils literal notranslate"><span class="pre">Index</span></code> is
+immutable, the underlying data can be safely shared and a copy
+is not needed.</p>
+<p>Since pandas is not thread safe, see the
+<a class="reference internal" href="../../user_guide/gotchas.html#gotchas-thread-safety"><span class="std std-ref">gotchas</span></a> when copying in a threading
+environment.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">copy_on_write</span></code> in pandas config is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the
+<code class="docutils literal notranslate"><span class="pre">copy_on_write</span></code> config takes effect even when <code class="docutils literal notranslate"><span class="pre">deep=False</span></code>.
+This means that any changes to the copied data would make a new copy
+of the data upon write (and vice versa). Changes made to either the
+original or copied variable would not be reflected in the counterpart.
+See <a class="reference internal" href="../../user_guide/copy_on_write.html#copy-on-write"><span class="std std-ref">Copy_on_Write</span></a> for more information.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+<span class="go">a    1</span>
+<span class="go">b    2</span>
+<span class="go">dtype: int64</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s_copy</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s_copy</span>
+<span class="go">a    1</span>
+<span class="go">b    2</span>
+<span class="go">dtype: int64</span>
+</pre></div>
+</div>
+<p><strong>Shallow copy versus default (deep) copy:</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">deep</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shallow</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Shallow copy shares data and index with original.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="ow">is</span> <span class="n">shallow</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">values</span> <span class="ow">is</span> <span class="n">shallow</span><span class="o">.</span><span class="n">values</span> <span class="ow">and</span> <span class="n">s</span><span class="o">.</span><span class="n">index</span> <span class="ow">is</span> <span class="n">shallow</span><span class="o">.</span><span class="n">index</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Deep copy has own copy of data and index.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="ow">is</span> <span class="n">deep</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">values</span> <span class="ow">is</span> <span class="n">deep</span><span class="o">.</span><span class="n">values</span> <span class="ow">or</span> <span class="n">s</span><span class="o">.</span><span class="n">index</span> <span class="ow">is</span> <span class="n">deep</span><span class="o">.</span><span class="n">index</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Updates to the data shared by shallow copy and original is reflected
+in both (NOTE: this will no longer be true for pandas &gt;= 3.0);
+deep copy remains unchanged.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shallow</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+<span class="go">a    3</span>
+<span class="go">b    4</span>
+<span class="go">dtype: int64</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shallow</span>
+<span class="go">a    3</span>
+<span class="go">b    4</span>
+<span class="go">dtype: int64</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">deep</span>
+<span class="go">a    1</span>
+<span class="go">b    2</span>
+<span class="go">dtype: int64</span>
+</pre></div>
+</div>
+<p>Note that when copying an object containing Python objects, a deep copy
+will copy the data, but will not do so recursively. Updating a nested
+data object will be reflected in the deep copy.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">deep</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+<span class="go">0    [10, 2]</span>
+<span class="go">1     [3, 4]</span>
+<span class="go">dtype: object</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">deep</span>
+<span class="go">0    [10, 2]</span>
+<span class="go">1     [3, 4]</span>
+<span class="go">dtype: object</span>
+</pre></div>
+</div>
+<p><strong>Copy-on-Write is set to true</strong>, the shallow copy is not modified
+when the original data is changed:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">option_context</span><span class="p">(</span><span class="s2">"mode.copy_on_write"</span><span class="p">,</span> <span class="kc">True</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">])</span>
+<span class="gp">... </span>    <span class="n">copy</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">s</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="gp">... </span>    <span class="n">s</span>
+<span class="go">a    100</span>
+<span class="go">b      2</span>
+<span class="go">dtype: int64</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">copy</span>
+<span class="go">a    1</span>
+<span class="go">b    2</span>
+<span class="go">dtype: int64</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+</article>
+<footer class="prev-next-footer">
+<div class="prev-next-area">
+<a class="left-prev" href="pandas.Series.infer_objects.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">pandas.Series.infer_objects</p>
+</div>
+</a>
+<a class="right-next" href="pandas.Series.bool.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">pandas.Series.bool</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>

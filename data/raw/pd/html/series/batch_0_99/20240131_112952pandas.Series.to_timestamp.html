@@ -1,0 +1,109 @@
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">API reference</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../series.html">Series</a></li>
+<li aria-current="page" class="breadcrumb-item active">pandas.Serie...</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="pandas-series-to-timestamp">
+<h1>pandas.Series.to_timestamp<a class="headerlink" href="#pandas-series-to-timestamp" title="Link to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="pandas.Series.to_timestamp">
+<span class="sig-prename descclassname"><span class="pre">Series.</span></span><span class="sig-name descname"><span class="pre">to_timestamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">freq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">how</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'start'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v2.2.0/pandas/core/series.py#L5898-L5968"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.Series.to_timestamp" title="Link to this definition">#</a></dt>
+<dd><p>Cast to DatetimeIndex of Timestamps, at <em>beginning</em> of period.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>freq</strong><span class="classifier">str, default frequency of PeriodIndex</span></dt><dd><p>Desired frequency.</p>
+</dd>
+<dt><strong>how</strong><span class="classifier">{âsâ, âeâ, âstartâ, âendâ}</span></dt><dd><p>Convention for converting period to timestamp; start of period
+vs. end.</p>
+</dd>
+<dt><strong>copy</strong><span class="classifier">bool, default True</span></dt><dd><p>Whether or not to return a copy.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <cite>copy</cite> keyword will change behavior in pandas 3.0.
+<a class="reference external" href="https://pandas.pydata.org/docs/dev/user_guide/copy_on_write.html">Copy-on-Write</a>
+will be enabled by default, which means that all methods with a
+<cite>copy</cite> keyword will use a lazy copy mechanism to defer the copy and
+ignore the <cite>copy</cite> keyword. The <cite>copy</cite> keyword will be removed in a
+future version of pandas.</p>
+<p>You can already get the future behavior and improvements through
+enabling copy on write <code class="docutils literal notranslate"><span class="pre">pd.options.mode.copy_on_write</span> <span class="pre">=</span> <span class="pre">True</span></code></p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>Series with DatetimeIndex</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">PeriodIndex</span><span class="p">([</span><span class="s1">'2023'</span><span class="p">,</span> <span class="s1">'2024'</span><span class="p">,</span> <span class="s1">'2025'</span><span class="p">],</span> <span class="n">freq</span><span class="o">=</span><span class="s1">'Y'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">idx</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span>
+<span class="go">2023    1</span>
+<span class="go">2024    2</span>
+<span class="go">2025    3</span>
+<span class="go">Freq: Y-DEC, dtype: int64</span>
+</pre></div>
+</div>
+<p>The resulting frequency of the Timestamps is <cite>YearBegin</cite></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">s1</span><span class="o">.</span><span class="n">to_timestamp</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span>
+<span class="go">2023-01-01    1</span>
+<span class="go">2024-01-01    2</span>
+<span class="go">2025-01-01    3</span>
+<span class="go">Freq: YS-JAN, dtype: int64</span>
+</pre></div>
+</div>
+<p>Using <cite>freq</cite> which is the offset that the Timestamps will have</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">idx</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s2</span> <span class="o">=</span> <span class="n">s2</span><span class="o">.</span><span class="n">to_timestamp</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s1">'M'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s2</span>
+<span class="go">2023-01-31    1</span>
+<span class="go">2024-01-31    2</span>
+<span class="go">2025-01-31    3</span>
+<span class="go">Freq: YE-JAN, dtype: int64</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+</article>
+<footer class="prev-next-footer">
+<div class="prev-next-area">
+<a class="left-prev" href="pandas.Series.to_period.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">pandas.Series.to_period</p>
+</div>
+</a>
+<a class="right-next" href="pandas.Series.to_list.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">pandas.Series.to_list</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>

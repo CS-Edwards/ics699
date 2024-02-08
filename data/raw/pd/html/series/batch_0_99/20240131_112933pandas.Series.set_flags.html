@@ -1,0 +1,104 @@
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">API reference</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../series.html">Series</a></li>
+<li aria-current="page" class="breadcrumb-item active">pandas.Serie...</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="pandas-series-set-flags">
+<h1>pandas.Series.set_flags<a class="headerlink" href="#pandas-series-set-flags" title="Link to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="pandas.Series.set_flags">
+<span class="sig-prename descclassname"><span class="pre">Series.</span></span><span class="sig-name descname"><span class="pre">set_flags</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allows_duplicate_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v2.2.0/pandas/core/generic.py#L445-L508"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.Series.set_flags" title="Link to this definition">#</a></dt>
+<dd><p>Return a new object with updated flags.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>copy</strong><span class="classifier">bool, default False</span></dt><dd><p>Specify if a copy of the object should be made.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <cite>copy</cite> keyword will change behavior in pandas 3.0.
+<a class="reference external" href="https://pandas.pydata.org/docs/dev/user_guide/copy_on_write.html">Copy-on-Write</a>
+will be enabled by default, which means that all methods with a
+<cite>copy</cite> keyword will use a lazy copy mechanism to defer the copy and
+ignore the <cite>copy</cite> keyword. The <cite>copy</cite> keyword will be removed in a
+future version of pandas.</p>
+<p>You can already get the future behavior and improvements through
+enabling copy on write <code class="docutils literal notranslate"><span class="pre">pd.options.mode.copy_on_write</span> <span class="pre">=</span> <span class="pre">True</span></code></p>
+</div>
+</dd>
+<dt><strong>allows_duplicate_labels</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether the returned object allows duplicate labels.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>Series or DataFrame</dt><dd><p>The same type as the caller.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="pandas.DataFrame.attrs.html#pandas.DataFrame.attrs" title="pandas.DataFrame.attrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame.attrs</span></code></a></dt><dd><p>Global metadata applying to this dataset.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame.flags</span></code></dt><dd><p>Global flags applying to this object.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>This method returns a new object thatâs a view on the same data
+as the input. Mutating the input or the output values will be reflected
+in the other.</p>
+<p>This method is intended to be used in method chains.</p>
+<p>âFlagsâ differ from âmetadataâ. Flags reflect properties of the
+pandas object (the Series or DataFrame). Metadata refer to properties
+of the dataset, and should be stored in <a class="reference internal" href="pandas.DataFrame.attrs.html#pandas.DataFrame.attrs" title="pandas.DataFrame.attrs"><code class="xref py py-attr docutils literal notranslate"><span class="pre">DataFrame.attrs</span></code></a>.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"A"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">allows_duplicate_labels</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_flags</span><span class="p">(</span><span class="n">allows_duplicate_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df2</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">allows_duplicate_labels</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+</article>
+<footer class="prev-next-footer">
+<div class="prev-next-area">
+<a class="left-prev" href="pandas.Series.flags.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">pandas.Series.flags</p>
+</div>
+</a>
+<a class="right-next" href="pandas.Series.astype.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">pandas.Series.astype</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>

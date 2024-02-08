@@ -1,0 +1,1 @@
+"{'name': 'delete_class', 'api_name': 'delete_class', 'description': 'Delete a schema class from Weaviate. This deletes all associated data.', 'parameters': {'required': [{'name': 'class_name', 'description': 'The class that should be deleted from Weaviate.'}], 'optional': []}}"

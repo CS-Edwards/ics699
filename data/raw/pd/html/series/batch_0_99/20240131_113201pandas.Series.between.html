@@ -1,0 +1,121 @@
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">API reference</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../series.html">Series</a></li>
+<li aria-current="page" class="breadcrumb-item active">pandas.Serie...</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="pandas-series-between">
+<h1>pandas.Series.between<a class="headerlink" href="#pandas-series-between" title="Link to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="pandas.Series.between">
+<span class="sig-prename descclassname"><span class="pre">Series.</span></span><span class="sig-name descname"><span class="pre">between</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">left</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inclusive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'both'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v2.2.0/pandas/core/series.py#L5544-L5635"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.Series.between" title="Link to this definition">#</a></dt>
+<dd><p>Return boolean Series equivalent to left &lt;= series &lt;= right.</p>
+<p>This function returns a boolean vector containing <cite>True</cite> wherever the
+corresponding Series element is between the boundary values <cite>left</cite> and
+<cite>right</cite>. NA values are treated as <cite>False</cite>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>left</strong><span class="classifier">scalar or list-like</span></dt><dd><p>Left boundary.</p>
+</dd>
+<dt><strong>right</strong><span class="classifier">scalar or list-like</span></dt><dd><p>Right boundary.</p>
+</dd>
+<dt><strong>inclusive</strong><span class="classifier">{âbothâ, âneitherâ, âleftâ, ârightâ}</span></dt><dd><p>Include boundaries. Whether to set each bound as closed or open.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 1.3.0.</span></p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>Series</dt><dd><p>Series representing whether each element is between left and
+right (inclusive).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="pandas.Series.gt.html#pandas.Series.gt" title="pandas.Series.gt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series.gt</span></code></a></dt><dd><p>Greater than of series and other.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.Series.lt.html#pandas.Series.lt" title="pandas.Series.lt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series.lt</span></code></a></dt><dd><p>Less than of series and other.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>This function is equivalent to <code class="docutils literal notranslate"><span class="pre">(left</span> <span class="pre">&lt;=</span> <span class="pre">ser)</span> <span class="pre">&amp;</span> <span class="pre">(ser</span> <span class="pre">&lt;=</span> <span class="pre">right)</span></code></p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Boundary values are included by default:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">0     True</span>
+<span class="go">1    False</span>
+<span class="go">2     True</span>
+<span class="go">3    False</span>
+<span class="go">4    False</span>
+<span class="go">dtype: bool</span>
+</pre></div>
+</div>
+<p>With <cite>inclusive</cite> set to <code class="docutils literal notranslate"><span class="pre">"neither"</span></code> boundary values are excluded:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">inclusive</span><span class="o">=</span><span class="s2">"neither"</span><span class="p">)</span>
+<span class="go">0     True</span>
+<span class="go">1    False</span>
+<span class="go">2    False</span>
+<span class="go">3    False</span>
+<span class="go">4    False</span>
+<span class="go">dtype: bool</span>
+</pre></div>
+</div>
+<p><cite>left</cite> and <cite>right</cite> can be any scalar value:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">'Alice'</span><span class="p">,</span> <span class="s1">'Bob'</span><span class="p">,</span> <span class="s1">'Carol'</span><span class="p">,</span> <span class="s1">'Eve'</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="s1">'Anna'</span><span class="p">,</span> <span class="s1">'Daniel'</span><span class="p">)</span>
+<span class="go">0    False</span>
+<span class="go">1     True</span>
+<span class="go">2     True</span>
+<span class="go">3    False</span>
+<span class="go">dtype: bool</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+</article>
+<footer class="prev-next-footer">
+<div class="prev-next-area">
+<a class="left-prev" href="pandas.Series.autocorr.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">pandas.Series.autocorr</p>
+</div>
+</a>
+<a class="right-next" href="pandas.Series.clip.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">pandas.Series.clip</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>

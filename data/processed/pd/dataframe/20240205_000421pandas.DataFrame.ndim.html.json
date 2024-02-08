@@ -1,0 +1,1 @@
+"{'name': 'DataFrame.ndim', 'api_name': 'DataFrame.ndim', 'description': 'Return an int representing the number of axes / array dimensions.\\nReturn 1 if Series. Otherwise return 2 if DataFrame.', 'parameters': {}}"

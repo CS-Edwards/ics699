@@ -1,0 +1,54 @@
+{
+    "Instruction": "To partition a .txt document into its constituent elements, provide the text of the document as input.",
+    "Function": {
+      "name": "partition_text",
+      "api_name": "partition_text",
+      "description": "Partitions an .txt documents into its constituent elements.",
+      "parameters": {
+        "optional": [
+          {
+            "name": "filename",
+            "description": "A string defining the target filename path.",
+            "data_type": "Optional[str]"
+          },
+          {
+            "name": "file",
+            "description": "A file-like object using \"r\" mode --> open(filename, \"r\").",
+            "data_type": "Optional[IO[bytes]]"
+          },
+          {
+            "name": "text",
+            "description": "The string representation of the .txt document.",
+            "data_type": "Optional[str]"
+          },
+          {
+            "name": "encoding",
+            "description": "The encoding method used to decode the text input. If None, utf-8 will be used.",
+            "data_type": "Optional[str]"
+          },
+          {
+            "name": "paragrapher_grouper",
+            "description": "A str -> str function for fixing paragraphs that are interrupted by line breaks for formatting purposes.",
+            "data_type": "Optional[Callable[[str], str]]"
+          },
+          {
+            "name": "include_metadata",
+            "description": "Determines whether or not metadata is included in the output.",
+            "data_type": "bool"
+          },
+          {
+            "name": "max_partition",
+            "description": "The maximum number of characters to include in a partition. If None is passed, no maximum is applied.",
+            "data_type": "Optional[int]"
+          },
+          {
+            "name": "**kwargs",
+            "description": "Additional keyword arguments.",
+            "data_type": ""
+          }
+        ]
+      }
+    },
+    "Output": "partition_text(text=\"sample text\")"
+  }
+  

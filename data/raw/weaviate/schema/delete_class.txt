@@ -1,0 +1,61 @@
+class Schema:
+    """
+    Schema class used to interact and manipulate schemas or classes.
+
+    Attributes
+    ----------
+    property : weaviate.schema.properties.Property
+        A Property object to create new schema property/ies.
+    """
+
+    def __init__(self, connection: Connection):
+        """
+        Initialize a Schema class instance.
+
+        Parameters
+        ----------
+        connection : weaviate.connect.Connection
+            Connection object to an active and running Weaviate instance.
+        """
+
+        self._connection = connection
+        self.property = Property(self._connection)
+
+
+
+
+
+
+ def delete_class(self, class_name: str) -> None:
+        """
+        Delete a schema class from Weaviate. This deletes all associated data.
+
+        Parameters
+        ----------
+        class_name : str
+            The class that should be deleted from Weaviate.
+
+        Examples
+        --------
+        >>> client.schema.delete_class('Author')
+
+        Raises
+        ------
+        TypeError
+            If 'class_name' argument not of type str.
+        requests.ConnectionError
+            If the network connection to Weaviate fails.
+        weaviate.UnexpectedStatusCodeException
+            If Weaviate reports a non-OK status.
+        """
+
+        if not isinstance(class_name, str):
+            raise TypeError(f"Class name was {type(class_name)} instead of str")
+
+        path = f"/schema/{_capitalize_first_letter(class_name)}"
+        try:
+            response = self._connection.delete(path=path)
+        except RequestsConnectionError as conn_err:
+            raise RequestsConnectionError("Deletion of class.") from conn_err
+        if response.status_code != 200:
+            raise UnexpectedStatusCodeException("Delete class from schema", response)

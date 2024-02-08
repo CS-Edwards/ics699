@@ -1,0 +1,107 @@
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">API reference</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../series.html">Series</a></li>
+<li aria-current="page" class="breadcrumb-item active">pandas.Series.get</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="pandas-series-get">
+<h1>pandas.Series.get<a class="headerlink" href="#pandas-series-get" title="Link to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="pandas.Series.get">
+<span class="sig-prename descclassname"><span class="pre">Series.</span></span><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v2.2.0/pandas/core/generic.py#L4520-L4577"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.Series.get" title="Link to this definition">#</a></dt>
+<dd><p>Get item from object for given key (ex: DataFrame column).</p>
+<p>Returns default value if not found.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>key</strong><span class="classifier">object</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>same type as items contained in object</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="mf">24.3</span><span class="p">,</span> <span class="mf">75.7</span><span class="p">,</span> <span class="s2">"high"</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="mi">31</span><span class="p">,</span> <span class="mf">87.8</span><span class="p">,</span> <span class="s2">"high"</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="mf">71.6</span><span class="p">,</span> <span class="s2">"medium"</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="s2">"medium"</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"temp_celsius"</span><span class="p">,</span> <span class="s2">"temp_fahrenheit"</span><span class="p">,</span> <span class="s2">"windspeed"</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s2">"2014-02-12"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">"2014-02-15"</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">"D"</span><span class="p">),</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">            temp_celsius  temp_fahrenheit windspeed</span>
+<span class="go">2014-02-12          24.3             75.7      high</span>
+<span class="go">2014-02-13          31.0             87.8      high</span>
+<span class="go">2014-02-14          22.0             71.6    medium</span>
+<span class="go">2014-02-15          35.0             95.0    medium</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s2">"temp_celsius"</span><span class="p">,</span> <span class="s2">"windspeed"</span><span class="p">])</span>
+<span class="go">            temp_celsius windspeed</span>
+<span class="go">2014-02-12          24.3      high</span>
+<span class="go">2014-02-13          31.0      high</span>
+<span class="go">2014-02-14          22.0    medium</span>
+<span class="go">2014-02-15          35.0    medium</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ser</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'windspeed'</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'2014-02-13'</span><span class="p">)</span>
+<span class="go">'high'</span>
+</pre></div>
+</div>
+<p>If the key isnât found, the default value will be used.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s2">"temp_celsius"</span><span class="p">,</span> <span class="s2">"temp_kelvin"</span><span class="p">],</span> <span class="n">default</span><span class="o">=</span><span class="s2">"default_value"</span><span class="p">)</span>
+<span class="go">'default_value'</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'2014-02-10'</span><span class="p">,</span> <span class="s1">'[unknown]'</span><span class="p">)</span>
+<span class="go">'[unknown]'</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+</article>
+<footer class="prev-next-footer">
+<div class="prev-next-area">
+<a class="left-prev" href="pandas.Series.__array__.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">pandas.Series.__array__</p>
+</div>
+</a>
+<a class="right-next" href="pandas.Series.at.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">pandas.Series.at</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>

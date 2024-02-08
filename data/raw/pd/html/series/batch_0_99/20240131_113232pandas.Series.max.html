@@ -1,0 +1,121 @@
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">API reference</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../series.html">Series</a></li>
+<li aria-current="page" class="breadcrumb-item active">pandas.Series.max</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="pandas-series-max">
+<h1>pandas.Series.max<a class="headerlink" href="#pandas-series-max" title="Link to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="pandas.Series.max">
+<span class="sig-prename descclassname"><span class="pre">Series.</span></span><span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skipna</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numeric_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v2.2.0/pandas/core/series.py#L6489-L6497"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.Series.max" title="Link to this definition">#</a></dt>
+<dd><p>Return the maximum of the values over the requested axis.</p>
+<p>If you want the <em>index</em> of the maximum, use <code class="docutils literal notranslate"><span class="pre">idxmax</span></code>. This is the equivalent of the <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> method <code class="docutils literal notranslate"><span class="pre">argmax</span></code>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>axis</strong><span class="classifier">{index (0)}</span></dt><dd><p>Axis for the function to be applied on.
+For <cite>Series</cite> this parameter is unused and defaults to 0.</p>
+<p>For DataFrames, specifying <code class="docutils literal notranslate"><span class="pre">axis=None</span></code> will apply the aggregation
+across both axes.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.0.0.</span></p>
+</div>
+</dd>
+<dt><strong>skipna</strong><span class="classifier">bool, default True</span></dt><dd><p>Exclude NA/null values when computing the result.</p>
+</dd>
+<dt><strong>numeric_only</strong><span class="classifier">bool, default False</span></dt><dd><p>Include only float, int, boolean columns. Not implemented for Series.</p>
+</dd>
+<dt><strong>**kwargs</strong></dt><dd><p>Additional keyword arguments to be passed to the function.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>scalar or scalar</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="pandas.Series.sum.html#pandas.Series.sum" title="pandas.Series.sum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series.sum</span></code></a></dt><dd><p>Return the sum.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.Series.min.html#pandas.Series.min" title="pandas.Series.min"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series.min</span></code></a></dt><dd><p>Return the minimum.</p>
+</dd>
+<dt><a class="reference internal" href="#pandas.Series.max" title="pandas.Series.max"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series.max</span></code></a></dt><dd><p>Return the maximum.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.Series.idxmin.html#pandas.Series.idxmin" title="pandas.Series.idxmin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series.idxmin</span></code></a></dt><dd><p>Return the index of the minimum.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.Series.idxmax.html#pandas.Series.idxmax" title="pandas.Series.idxmax"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series.idxmax</span></code></a></dt><dd><p>Return the index of the maximum.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.DataFrame.sum.html#pandas.DataFrame.sum" title="pandas.DataFrame.sum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame.sum</span></code></a></dt><dd><p>Return the sum over the requested axis.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.DataFrame.min.html#pandas.DataFrame.min" title="pandas.DataFrame.min"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame.min</span></code></a></dt><dd><p>Return the minimum over the requested axis.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.DataFrame.max.html#pandas.DataFrame.max" title="pandas.DataFrame.max"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame.max</span></code></a></dt><dd><p>Return the maximum over the requested axis.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.DataFrame.idxmin.html#pandas.DataFrame.idxmin" title="pandas.DataFrame.idxmin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame.idxmin</span></code></a></dt><dd><p>Return the index of the minimum over the requested axis.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.DataFrame.idxmax.html#pandas.DataFrame.idxmax" title="pandas.DataFrame.idxmax"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame.idxmax</span></code></a></dt><dd><p>Return the index of the maximum over the requested axis.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_arrays</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s1">'warm'</span><span class="p">,</span> <span class="s1">'warm'</span><span class="p">,</span> <span class="s1">'cold'</span><span class="p">,</span> <span class="s1">'cold'</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s1">'dog'</span><span class="p">,</span> <span class="s1">'falcon'</span><span class="p">,</span> <span class="s1">'fish'</span><span class="p">,</span> <span class="s1">'spider'</span><span class="p">]],</span>
+<span class="gp">... </span>    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">'blooded'</span><span class="p">,</span> <span class="s1">'animal'</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">'legs'</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">idx</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+<span class="go">blooded  animal</span>
+<span class="go">warm     dog       4</span>
+<span class="go">         falcon    2</span>
+<span class="go">cold     fish      0</span>
+<span class="go">         spider    8</span>
+<span class="go">Name: legs, dtype: int64</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="go">8</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+</article>
+<footer class="prev-next-footer">
+<div class="prev-next-area">
+<a class="left-prev" href="pandas.Series.kurt.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">pandas.Series.kurt</p>
+</div>
+</a>
+<a class="right-next" href="pandas.Series.mean.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">pandas.Series.mean</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>

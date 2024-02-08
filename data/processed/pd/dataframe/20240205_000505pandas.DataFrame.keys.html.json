@@ -1,0 +1,1 @@
+"{'name': 'DataFrame.keys', 'api_name': 'DataFrame.keys', 'description': 'Get the \u00e2\u0080\u0098info axis\u00e2\u0080\u0099 (see Indexing for more).\\nThis is index for Series, columns for DataFrame.\\n\\nReturns:\\n\\nIndexInfo axis.', 'parameters': {}}"

@@ -1,0 +1,1 @@
+"{'name': 'DataFrame.bool', 'api_name': 'DataFrame.bool', 'description': 'Return the bool of a single element Series or DataFrame.\\n\\nDeprecated since version 2.1.0: bool is deprecated and will be removed in future version of pandas.\\nFor Series use pandas.Series.item.', 'parameters': {}}"

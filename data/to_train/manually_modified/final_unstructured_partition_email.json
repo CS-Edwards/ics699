@@ -1,0 +1,56 @@
+{
+    "Instruction": "I want to partition an email file from this path 'example-docs/my-email.eml' and save it in an elements variable",
+    "Function": {
+      "name": "partition_email",
+      "api_name": "partition_email",
+      "description": "Partitions an .eml document into its constituent elements.",
+      "parameters": {
+        "required": [
+          {
+            "name": "filename",
+            "description": "A string defining the target filename path."
+          }
+        
+        ],
+        "optional": [          
+          {
+            "name": "file",
+            "description": "A file-like object using \"r\" mode --> open(filename, \"r\")."
+          },
+          {
+            "name": "text",
+            "description": "The string representation of the .eml document."
+          },
+          {
+            "name": "content_source",
+            "description": "default: \"text/html\"\n        other: \"text/plain\""
+          },
+          {
+            "name": "encoding",
+            "description": "The encoding method used to decode the text input. If None, utf-8 will be used."
+          },
+          {
+            "name": "max_partition",
+            "description": "The maximum number of characters to include in a partition. If None is passed,\n        no maximum is applied. Only applies if processing the text/plain content."
+          },
+          {
+            "name": "metadata_filename",
+            "description": "The filename to use for the metadata."
+          },
+          {
+            "name": "process_attachments",
+            "description": "If True, partition_email will process email attachments in addition to\n        processing the content of the email itself."
+          },
+          {
+            "name": "attachment_partitioner",
+            "description": "The partitioning function to use to process attachments."
+          },
+          {
+            "name": "**kwargs"
+          }
+        ]
+      }
+    },
+    "Output": "elements = partition_email(filename='example-docs/fake-email.eml')"
+  }
+  

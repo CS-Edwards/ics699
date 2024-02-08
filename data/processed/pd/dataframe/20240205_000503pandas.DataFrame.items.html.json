@@ -1,0 +1,1 @@
+"{'name': 'DataFrame.items', 'api_name': 'DataFrame.items()', 'description': 'Iterate over (column name, Series) pairs. Iterates over the DataFrame columns, returning a tuple with the column name and the content as a Series.', 'parameters': {'required': [], 'optional': []}}"

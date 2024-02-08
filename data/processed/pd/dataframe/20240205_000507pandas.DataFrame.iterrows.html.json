@@ -1,0 +1,1 @@
+"{'name': 'DataFrame.iterrows', 'api_name': 'DataFrame.iterrows', 'description': 'Iterate over DataFrame rows as (index, Series) pairs.', 'parameters': {'required': [], 'optional': []}}"

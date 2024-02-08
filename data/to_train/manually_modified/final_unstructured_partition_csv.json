@@ -1,0 +1,49 @@
+{
+    "Instruction": "I want to partition a .csv file from this path 'example-docs/stanley-cups.csv' and save it in an elements variable",
+    "Function": {
+      "name": "partition_csv",
+      "api_name": "partition_csv",
+      "description": "Partitions Microsoft Excel Documents in .csv format into its document elements.",
+      "parameters": {
+        "required": [
+          {
+            "name": "filename",
+            "description": "A string defining the target filename path."
+          }
+          
+        ],
+        "optional": [
+          {
+            "name": "file",
+            "description": "A file-like object using \"rb\" mode --> open(filename, \"rb\")."
+          },
+          {
+            "name": "metadata_filename",
+            "description": "The filename to use for the metadata."
+          },
+          {
+            "name": "metadata_last_modified",
+            "description": "The last modified date for the document."
+          },
+          {
+            "name": "include_header",
+            "description": "Determines whether or not header info info is included in text and medatada.text_as_html."
+          },
+          {
+            "name": "include_metadata",
+            "description": "Determines whether or not metadata is included in the output."
+          },
+          {
+            "name": "infer_table_structure",
+            "description": "If True, any Table elements that are extracted will also have a metadata field named 'text_as_html' where the table's text content is rendered into an html string. I.e., rows and cells are preserved. Whether True or False, the 'text' field is always present in any Table element and is the text content of the table (no structure)."
+          },
+          {
+            "name": "languages",
+            "description": "User defined value for `metadata.languages` if provided. Otherwise language is detected using naive Bayesian filter via `langdetect`. Multiple languages indicate text could be in either language."
+          }
+        ]
+      }
+    },
+    "Output":"elements = partition_csv(filename='example-docs/stanley-cups.csv')"
+  }
+  

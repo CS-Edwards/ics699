@@ -1,0 +1,148 @@
+class Schema:
+    """
+    Schema class used to interact and manipulate schemas or classes.
+
+    Attributes
+    ----------
+    property : weaviate.schema.properties.Property
+        A Property object to create new schema property/ies.
+    """
+
+    def __init__(self, connection: Connection):
+        """
+        Initialize a Schema class instance.
+
+        Parameters
+        ----------
+        connection : weaviate.connect.Connection
+            Connection object to an active and running Weaviate instance.
+        """
+
+        self._connection = connection
+        self.property = Property(self._connection)
+
+
+[docs]
+    def create(self, schema: Union[dict, str]) -> None:
+        """
+        Create the schema of the Weaviate instance, with all classes at once.
+
+        Parameters
+        ----------
+        schema : dict or str
+            Schema as a Python dict, or the path to a JSON file, or the URL of a JSON file.
+
+        Examples
+        --------
+        >>> article_class = {
+        ...     "class": "Article",
+        ...     "description": "An article written by an Author",
+        ...     "properties": [
+        ...         {
+        ...             "name": "title",
+        ...             "dataType": ["text"],
+        ...             "description": "The title the article",
+        ...         },
+        ...         {
+        ...             "name": "hasAuthors",
+        ...             "dataType": ["Author"],
+        ...             "description": "Authors this article has",
+        ...         }
+        ...     ]
+        ... }
+        >>> author_class = {
+        ...     "class": "Author",
+        ...     "description": "An Author class to store the author information",
+        ...     "properties": [
+        ...         {
+        ...             "name": "name",
+        ...             "dataType": ["text"],
+        ...             "description": "The name of the author",
+        ...         },
+        ...         {
+        ...             "name": "wroteArticles",
+        ...             "dataType": ["Article"],
+        ...             "description": "The articles of the author",
+        ...         }
+        ...     ]
+        ... }
+        >>> client.schema.create({"classes": [article_class, author_class]})
+
+        If you have your schema saved in the './schema/my_schema.json' you can create it
+        directly from the file.
+
+        >>> client.schema.create('./schema/my_schema.json')
+
+        Raises
+        ------
+        TypeError
+            If the 'schema' is neither a string nor a dict.
+        ValueError
+            If 'schema' can not be converted into a Weaviate schema.
+        requests.ConnectionError
+            If the network connection to Weaviate fails.
+        weaviate.UnexpectedStatusCodeException
+            If Weaviate reports a non-OK status.
+        weaviate.SchemaValidationException
+            If the 'schema' could not be validated against the standard format.
+        """
+
+        loaded_schema = _get_dict_from_object(schema)
+        self._create_classes_with_primitives(loaded_schema["classes"])
+        self._create_complex_properties_from_classes(loaded_schema["classes"])
+
+
+
+
+[docs]
+    def create_class(self, schema_class: Union[dict, str]) -> None:
+        """
+        Create a single class as part of the schema in Weaviate.
+
+        Parameters
+        ----------
+        schema_class : dict or str
+            Class as a Python dict, or the path to a JSON file, or the URL of a JSON file.
+
+        Examples
+        --------
+        >>> author_class_schema = {
+        ...     "class": "Author",
+        ...     "description": "An Author class to store the author information",
+        ...     "properties": [
+        ...         {
+        ...             "name": "name",
+        ...             "dataType": ["text"],
+        ...             "description": "The name of the author",
+        ...         },
+        ...         {
+        ...             "name": "wroteArticles",
+        ...             "dataType": ["Article"],
+        ...             "description": "The articles of the author",
+        ...         }
+        ...     ]
+        ... }
+        >>> client.schema.create_class(author_class_schema)
+
+        If you have your class schema saved in the './schema/my_schema.json' you can create it
+        directly from the file.
+
+        >>> client.schema.create_class('./schema/my_schema.json')
+
+        Raises
+        ------
+        TypeError
+            If the 'schema_class' is neither a string nor a dict.
+        ValueError
+            If 'schema_class' can not be converted into a Weaviate schema.
+        requests.ConnectionError
+            If the network connection to Weaviate fails.
+        weaviate.UnexpectedStatusCodeException
+            If Weaviate reports a non-OK status.
+        weaviate.SchemaValidationException
+            If the 'schema_class' could not be validated against the standard format.
+        """
+
+        loaded_schema_class = _get_dict_from_object(schema_class)
+        self._create_class_with_primitives(loaded_schema_class)
+        self._create_complex_properties_from_class(loaded_schema_class)

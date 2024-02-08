@@ -1,0 +1,41 @@
+@process_metadata()
+@add_metadata_with_filetype(FileType.EML)
+def partition_email(
+    filename: Optional[str] = None,
+    file: Optional[Union[IO[bytes], SpooledTemporaryFile]] = None,
+    text: Optional[str] = None,
+    content_source: str = "text/html",
+    encoding: Optional[str] = None,
+    include_headers: bool = False,
+    max_partition: Optional[int] = 1500,
+    include_metadata: bool = True,
+    metadata_filename: Optional[str] = None,
+    process_attachments: bool = False,
+    attachment_partitioner: Optional[Callable] = None,
+    **kwargs,
+) -> List[Element]:
+    """Partitions an .eml documents into its constituent elements.
+    Parameters
+    ----------
+    filename
+        A string defining the target filename path.
+    file
+        A file-like object using "r" mode --> open(filename, "r").
+    text
+        The string representation of the .eml document.
+    content_source
+        default: "text/html"
+        other: "text/plain"
+    encoding
+        The encoding method used to decode the text input. If None, utf-8 will be used.
+    max_partition
+        The maximum number of characters to include in a partition. If None is passed,
+        no maximum is applied. Only applies if processing the text/plain content.
+    metadata_filename
+        The filename to use for the metadata.
+    process_attachments
+        If True, partition_email will process email attachments in addition to
+        processing the content of the email itself.
+    attachment_partitioner
+        The partitioning function to use to process attachments.
+    """

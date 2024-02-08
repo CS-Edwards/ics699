@@ -1,0 +1,28 @@
+{
+    "Instruction": "To use the DataFrame.query() function, provide the query string as the 'expr' parameter. This function allows you to query the columns of a DataFrame with a boolean expression.",
+    "Function": {
+      "name": "DataFrame.query",
+      "api_name": "DataFrame.query",
+      "description": "Query the columns of a DataFrame with a boolean expression.",
+      "parameters": {
+        "required": [
+          {
+            "name": "expr",
+            "description": "The query string to evaluate."
+          }
+        ],
+        "optional": [
+          {
+            "name": "inplace",
+            "description": "Whether to modify the DataFrame rather than creating a new one."
+          },
+          {
+            "name": "**kwargs",
+            "description": "See the documentation for eval() for complete details\non the keyword arguments accepted by DataFrame.query()."
+          }
+        ]
+      }
+    },
+    "Output": "DataFrame.query(expr=<query_string>)"
+  }
+  

@@ -1,0 +1,1 @@
+"{'name': 'Schema', 'api_name': 'Schema', 'description': 'Schema class used to interact and manipulate schemas or classes.', 'parameters': {'required': [{'name': 'connection', 'description': 'Connection object to an active and running Weaviate instance.'}], 'optional': []}}"

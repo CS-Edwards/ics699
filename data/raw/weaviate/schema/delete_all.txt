@@ -1,0 +1,38 @@
+
+class Schema:
+    """
+    Schema class used to interact and manipulate schemas or classes.
+
+    Attributes
+    ----------
+    property : weaviate.schema.properties.Property
+        A Property object to create new schema property/ies.
+    """
+
+    def __init__(self, connection: Connection):
+        """
+        Initialize a Schema class instance.
+
+        Parameters
+        ----------
+        connection : weaviate.connect.Connection
+            Connection object to an active and running Weaviate instance.
+        """
+
+        self._connection = connection
+        self.property = Property(self._connection)
+
+
+   def delete_all(self) -> None:
+        """
+        Remove the entire schema from the Weaviate instance and all data associated with it.
+
+        Examples
+        --------
+        >>> client.schema.delete_all()
+        """
+
+        schema = self.get()
+        classes = schema.get("classes", [])
+        for _class in classes:
+            self.delete_class(_class["class"])

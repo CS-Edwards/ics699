@@ -1,0 +1,189 @@
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">API reference</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../frame.html">DataFrame</a></li>
+<li aria-current="page" class="breadcrumb-item active">pandas.DataF...</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="pandas-dataframe-where">
+<h1>pandas.DataFrame.where<a class="headerlink" href="#pandas-dataframe-where" title="Link to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="pandas.DataFrame.where">
+<span class="sig-prename descclassname"><span class="pre">DataFrame.</span></span><span class="sig-name descname"><span class="pre">where</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cond</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">nan</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v2.2.0/pandas/core/generic.py#L10797-L10978"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.DataFrame.where" title="Link to this definition">#</a></dt>
+<dd><p>Replace values where the condition is False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>cond</strong><span class="classifier">bool Series/DataFrame, array-like, or callable</span></dt><dd><p>Where <cite>cond</cite> is True, keep the original value. Where
+False, replace with corresponding value from <cite>other</cite>.
+If <cite>cond</cite> is callable, it is computed on the Series/DataFrame and
+should return boolean Series/DataFrame or array. The callable must
+not change input Series/DataFrame (though pandas doesnât check it).</p>
+</dd>
+<dt><strong>other</strong><span class="classifier">scalar, Series/DataFrame, or callable</span></dt><dd><p>Entries where <cite>cond</cite> is False are replaced with
+corresponding value from <cite>other</cite>.
+If other is callable, it is computed on the Series/DataFrame and
+should return scalar or Series/DataFrame. The callable must not
+change input Series/DataFrame (though pandas doesnât check it).
+If not specified, entries will be filled with the corresponding
+NULL value (<code class="docutils literal notranslate"><span class="pre">np.nan</span></code> for numpy dtypes, <code class="docutils literal notranslate"><span class="pre">pd.NA</span></code> for extension
+dtypes).</p>
+</dd>
+<dt><strong>inplace</strong><span class="classifier">bool, default False</span></dt><dd><p>Whether to perform the operation in place on the data.</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">int, default None</span></dt><dd><p>Alignment axis if needed. For <cite>Series</cite> this parameter is
+unused and defaults to 0.</p>
+</dd>
+<dt><strong>level</strong><span class="classifier">int, default None</span></dt><dd><p>Alignment level if needed.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>Same type as caller or None if <code class="docutils literal notranslate"><span class="pre">inplace=True</span></code>.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="pandas.DataFrame.mask.html#pandas.DataFrame.mask" title="pandas.DataFrame.mask"><code class="xref py py-func docutils literal notranslate"><span class="pre">DataFrame.mask()</span></code></a></dt><dd><p>Return an object of same shape as self.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The where method is an application of the if-then idiom. For each
+element in the calling DataFrame, if <code class="docutils literal notranslate"><span class="pre">cond</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code> the
+element is used; otherwise the corresponding element from the DataFrame
+<code class="docutils literal notranslate"><span class="pre">other</span></code> is used. If the axis of <code class="docutils literal notranslate"><span class="pre">other</span></code> does not align with axis of
+<code class="docutils literal notranslate"><span class="pre">cond</span></code> Series/DataFrame, the misaligned index positions will be filled with
+False.</p>
+<p>The signature for <a class="reference internal" href="#pandas.DataFrame.where" title="pandas.DataFrame.where"><code class="xref py py-func docutils literal notranslate"><span class="pre">DataFrame.where()</span></code></a> differs from
+<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.where.html#numpy.where" title="(in NumPy v1.26)"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.where()</span></code></a>. Roughly <code class="docutils literal notranslate"><span class="pre">df1.where(m,</span> <span class="pre">df2)</span></code> is equivalent to
+<code class="docutils literal notranslate"><span class="pre">np.where(m,</span> <span class="pre">df1,</span> <span class="pre">df2)</span></code>.</p>
+<p>For further details and examples see the <code class="docutils literal notranslate"><span class="pre">where</span></code> documentation in
+<a class="reference internal" href="../../user_guide/indexing.html#indexing-where-mask"><span class="std std-ref">indexing</span></a>.</p>
+<p>The dtype of the object takes precedence. The fill value is casted to
+the objectâs dtype, if this can be done losslessly.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">s</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">0    NaN</span>
+<span class="go">1    1.0</span>
+<span class="go">2    2.0</span>
+<span class="go">3    3.0</span>
+<span class="go">4    4.0</span>
+<span class="go">dtype: float64</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">s</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">0    0.0</span>
+<span class="go">1    NaN</span>
+<span class="go">2    NaN</span>
+<span class="go">3    NaN</span>
+<span class="go">4    NaN</span>
+<span class="go">dtype: float64</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
+<span class="go">0     0</span>
+<span class="go">1    99</span>
+<span class="go">2    99</span>
+<span class="go">3    99</span>
+<span class="go">4    99</span>
+<span class="go">dtype: int64</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
+<span class="go">0    99</span>
+<span class="go">1     1</span>
+<span class="go">2    99</span>
+<span class="go">3    99</span>
+<span class="go">4    99</span>
+<span class="go">dtype: int64</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">s</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="go">0    10</span>
+<span class="go">1    10</span>
+<span class="go">2    2</span>
+<span class="go">3    3</span>
+<span class="go">4    4</span>
+<span class="go">dtype: int64</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">s</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="go">0     0</span>
+<span class="go">1     1</span>
+<span class="go">2    10</span>
+<span class="go">3    10</span>
+<span class="go">4    10</span>
+<span class="go">dtype: int64</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'A'</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">   A  B</span>
+<span class="go">0  0  1</span>
+<span class="go">1  2  3</span>
+<span class="go">2  4  5</span>
+<span class="go">3  6  7</span>
+<span class="go">4  8  9</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">df</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="o">-</span><span class="n">df</span><span class="p">)</span>
+<span class="go">   A  B</span>
+<span class="go">0  0 -1</span>
+<span class="go">1 -2  3</span>
+<span class="go">2 -4 -5</span>
+<span class="go">3  6 -7</span>
+<span class="go">4 -8  9</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="o">-</span><span class="n">df</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="o">-</span><span class="n">df</span><span class="p">)</span>
+<span class="go">      A     B</span>
+<span class="go">0  True  True</span>
+<span class="go">1  True  True</span>
+<span class="go">2  True  True</span>
+<span class="go">3  True  True</span>
+<span class="go">4  True  True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="o">-</span><span class="n">df</span><span class="p">)</span> <span class="o">==</span> <span class="n">df</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="o">~</span><span class="n">m</span><span class="p">,</span> <span class="o">-</span><span class="n">df</span><span class="p">)</span>
+<span class="go">      A     B</span>
+<span class="go">0  True  True</span>
+<span class="go">1  True  True</span>
+<span class="go">2  True  True</span>
+<span class="go">3  True  True</span>
+<span class="go">4  True  True</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+</article>
+<footer class="prev-next-footer">
+<div class="prev-next-area">
+<a class="left-prev" href="pandas.DataFrame.isin.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">pandas.DataFrame.isin</p>
+</div>
+</a>
+<a class="right-next" href="pandas.DataFrame.mask.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">pandas.DataFrame.mask</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>

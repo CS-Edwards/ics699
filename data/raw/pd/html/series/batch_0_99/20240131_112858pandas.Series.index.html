@@ -1,0 +1,89 @@
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">API reference</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../series.html">Series</a></li>
+<li aria-current="page" class="breadcrumb-item active">pandas.Series.index</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="pandas-series-index">
+<h1>pandas.Series.index<a class="headerlink" href="#pandas-series-index" title="Link to this heading">#</a></h1>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pandas.Series.index">
+<span class="sig-prename descclassname"><span class="pre">Series.</span></span><span class="sig-name descname"><span class="pre">index</span></span><a class="headerlink" href="#pandas.Series.index" title="Link to this definition">#</a></dt>
+<dd><p>The index (axis labels) of the Series.</p>
+<p>The index of a Series is used to label and identify each element of the
+underlying data. The index can be thought of as an immutable ordered set
+(technically a multi-set, as it may contain duplicate labels), and is
+used to index and align data in pandas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Index</dt><dd><p>The index labels of the Series.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="pandas.Series.reindex.html#pandas.Series.reindex" title="pandas.Series.reindex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series.reindex</span></code></a></dt><dd><p>Conform Series to new index.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.Index.html#pandas.Index" title="pandas.Index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index</span></code></a></dt><dd><p>The base pandas index type.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>For more information on pandas indexing, see the <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/indexing.html">indexing user guide</a>.</p>
+<p class="rubric">Examples</p>
+<p>To create a Series with a custom index and view the index labels:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cities</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Kolkata'</span><span class="p">,</span> <span class="s1">'Chicago'</span><span class="p">,</span> <span class="s1">'Toronto'</span><span class="p">,</span> <span class="s1">'Lisbon'</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">populations</span> <span class="o">=</span> <span class="p">[</span><span class="mf">14.85</span><span class="p">,</span> <span class="mf">2.71</span><span class="p">,</span> <span class="mf">2.93</span><span class="p">,</span> <span class="mf">0.51</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">city_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">populations</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">cities</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">city_series</span><span class="o">.</span><span class="n">index</span>
+<span class="go">Index(['Kolkata', 'Chicago', 'Toronto', 'Lisbon'], dtype='object')</span>
+</pre></div>
+</div>
+<p>To change the index labels of an existing Series:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">city_series</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'KOL'</span><span class="p">,</span> <span class="s1">'CHI'</span><span class="p">,</span> <span class="s1">'TOR'</span><span class="p">,</span> <span class="s1">'LIS'</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">city_series</span><span class="o">.</span><span class="n">index</span>
+<span class="go">Index(['KOL', 'CHI', 'TOR', 'LIS'], dtype='object')</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+</article>
+<footer class="prev-next-footer">
+<div class="prev-next-area">
+<a class="left-prev" href="pandas.Series.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">pandas.Series</p>
+</div>
+</a>
+<a class="right-next" href="pandas.Series.array.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">pandas.Series.array</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>

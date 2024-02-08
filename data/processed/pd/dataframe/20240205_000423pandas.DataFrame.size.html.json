@@ -1,0 +1,1 @@
+"{'name': 'DataFrame.size', 'api_name': 'DataFrame.size', 'description': 'Return an int representing the number of elements in this object.\\nReturn the number of rows if Series. Otherwise return the number of\\nrows times number of columns if DataFrame.', 'parameters': {}}"

@@ -1,0 +1,18 @@
+{
+    "Instruction": "I want to partition my html file from this path 'example-docs/my-site.html' and save it in an elements variable",
+    "Function": {
+      "name": "partition_html",
+      "api_name": "partition_html",
+      "description": "Partitions an HTML document into its constituent elements.",
+      "parameters": {
+        "required": [
+          {
+            "name": "filename",
+            "description": "A string defining the target filename path."
+          }
+        ]
+      }
+    },
+    "Output": "elements = partition_html(filename='example-docs/example-10k.html')"
+  }
+  

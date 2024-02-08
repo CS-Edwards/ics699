@@ -1,0 +1,151 @@
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">API reference</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../series.html">Series</a></li>
+<li aria-current="page" class="breadcrumb-item active">pandas.Serie...</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="pandas-series-nlargest">
+<h1>pandas.Series.nlargest<a class="headerlink" href="#pandas-series-nlargest" title="Link to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="pandas.Series.nlargest">
+<span class="sig-prename descclassname"><span class="pre">Series.</span></span><span class="sig-name descname"><span class="pre">nlargest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'first'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v2.2.0/pandas/core/series.py#L4134-L4232"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.Series.nlargest" title="Link to this definition">#</a></dt>
+<dd><p>Return the largest <cite>n</cite> elements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>n</strong><span class="classifier">int, default 5</span></dt><dd><p>Return this many descending sorted values.</p>
+</dd>
+<dt><strong>keep</strong><span class="classifier">{âfirstâ, âlastâ, âallâ}, default âfirstâ</span></dt><dd><p>When there are duplicate values that cannot all fit in a
+Series of <cite>n</cite> elements:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">first</span></code> : return the first <cite>n</cite> occurrences in order
+of appearance.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">last</span></code> : return the last <cite>n</cite> occurrences in reverse
+order of appearance.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">all</span></code> : keep all occurrences. This can result in a Series of
+size larger than <cite>n</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>Series</dt><dd><p>The <cite>n</cite> largest values in the Series, sorted in decreasing order.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="pandas.Series.nsmallest.html#pandas.Series.nsmallest" title="pandas.Series.nsmallest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series.nsmallest</span></code></a></dt><dd><p>Get the <cite>n</cite> smallest elements.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.Series.sort_values.html#pandas.Series.sort_values" title="pandas.Series.sort_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series.sort_values</span></code></a></dt><dd><p>Sort Series by values.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.Series.head.html#pandas.Series.head" title="pandas.Series.head"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series.head</span></code></a></dt><dd><p>Return the first <cite>n</cite> rows.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Faster than <code class="docutils literal notranslate"><span class="pre">.sort_values(ascending=False).head(n)</span></code> for small <cite>n</cite>
+relative to the size of the <code class="docutils literal notranslate"><span class="pre">Series</span></code> object.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">countries_population</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Italy"</span><span class="p">:</span> <span class="mi">59000000</span><span class="p">,</span> <span class="s2">"France"</span><span class="p">:</span> <span class="mi">65000000</span><span class="p">,</span>
+<span class="gp">... </span>                        <span class="s2">"Malta"</span><span class="p">:</span> <span class="mi">434000</span><span class="p">,</span> <span class="s2">"Maldives"</span><span class="p">:</span> <span class="mi">434000</span><span class="p">,</span>
+<span class="gp">... </span>                        <span class="s2">"Brunei"</span><span class="p">:</span> <span class="mi">434000</span><span class="p">,</span> <span class="s2">"Iceland"</span><span class="p">:</span> <span class="mi">337000</span><span class="p">,</span>
+<span class="gp">... </span>                        <span class="s2">"Nauru"</span><span class="p">:</span> <span class="mi">11300</span><span class="p">,</span> <span class="s2">"Tuvalu"</span><span class="p">:</span> <span class="mi">11300</span><span class="p">,</span>
+<span class="gp">... </span>                        <span class="s2">"Anguilla"</span><span class="p">:</span> <span class="mi">11300</span><span class="p">,</span> <span class="s2">"Montserrat"</span><span class="p">:</span> <span class="mi">5200</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">countries_population</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+<span class="go">Italy       59000000</span>
+<span class="go">France      65000000</span>
+<span class="go">Malta         434000</span>
+<span class="go">Maldives      434000</span>
+<span class="go">Brunei        434000</span>
+<span class="go">Iceland       337000</span>
+<span class="go">Nauru          11300</span>
+<span class="go">Tuvalu         11300</span>
+<span class="go">Anguilla       11300</span>
+<span class="go">Montserrat      5200</span>
+<span class="go">dtype: int64</span>
+</pre></div>
+</div>
+<p>The <cite>n</cite> largest elements where <code class="docutils literal notranslate"><span class="pre">n=5</span></code> by default.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">nlargest</span><span class="p">()</span>
+<span class="go">France      65000000</span>
+<span class="go">Italy       59000000</span>
+<span class="go">Malta         434000</span>
+<span class="go">Maldives      434000</span>
+<span class="go">Brunei        434000</span>
+<span class="go">dtype: int64</span>
+</pre></div>
+</div>
+<p>The <cite>n</cite> largest elements where <code class="docutils literal notranslate"><span class="pre">n=3</span></code>. Default <cite>keep</cite> value is âfirstâ
+so Malta will be kept.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">France    65000000</span>
+<span class="go">Italy     59000000</span>
+<span class="go">Malta       434000</span>
+<span class="go">dtype: int64</span>
+</pre></div>
+</div>
+<p>The <cite>n</cite> largest elements where <code class="docutils literal notranslate"><span class="pre">n=3</span></code> and keeping the last duplicates.
+Brunei will be kept since it is the last with value 434000 based on
+the index order.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="s1">'last'</span><span class="p">)</span>
+<span class="go">France      65000000</span>
+<span class="go">Italy       59000000</span>
+<span class="go">Brunei        434000</span>
+<span class="go">dtype: int64</span>
+</pre></div>
+</div>
+<p>The <cite>n</cite> largest elements where <code class="docutils literal notranslate"><span class="pre">n=3</span></code> with all duplicates kept. Note
+that the returned Series has five elements due to the three duplicates.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="s1">'all'</span><span class="p">)</span>
+<span class="go">France      65000000</span>
+<span class="go">Italy       59000000</span>
+<span class="go">Malta         434000</span>
+<span class="go">Maldives      434000</span>
+<span class="go">Brunei        434000</span>
+<span class="go">dtype: int64</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+</article>
+<footer class="prev-next-footer">
+<div class="prev-next-area">
+<a class="left-prev" href="pandas.Series.mode.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">pandas.Series.mode</p>
+</div>
+</a>
+<a class="right-next" href="pandas.Series.nsmallest.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">pandas.Series.nsmallest</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>

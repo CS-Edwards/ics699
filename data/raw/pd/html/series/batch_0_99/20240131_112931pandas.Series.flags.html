@@ -1,0 +1,86 @@
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">API reference</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../series.html">Series</a></li>
+<li aria-current="page" class="breadcrumb-item active">pandas.Series.flags</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="pandas-series-flags">
+<h1>pandas.Series.flags<a class="headerlink" href="#pandas-series-flags" title="Link to this heading">#</a></h1>
+<dl class="py property">
+<dt class="sig sig-object py" id="pandas.Series.flags">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Series.</span></span><span class="sig-name descname"><span class="pre">flags</span></span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v2.2.0/pandas/core/generic.py#L404-L443"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.Series.flags" title="Link to this definition">#</a></dt>
+<dd><p>Get the properties associated with this pandas object.</p>
+<p>The available flags are</p>
+<ul class="simple">
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">Flags.allows_duplicate_labels</span></code></p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="pandas.Flags.html#pandas.Flags" title="pandas.Flags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Flags</span></code></a></dt><dd><p>Flags that apply to pandas objects.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.DataFrame.attrs.html#pandas.DataFrame.attrs" title="pandas.DataFrame.attrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame.attrs</span></code></a></dt><dd><p>Global metadata applying to this dataset.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>âFlagsâ differ from âmetadataâ. Flags reflect properties of the
+pandas object (the Series or DataFrame). Metadata refer to properties
+of the dataset, and should be stored in <a class="reference internal" href="pandas.DataFrame.attrs.html#pandas.DataFrame.attrs" title="pandas.DataFrame.attrs"><code class="xref py py-attr docutils literal notranslate"><span class="pre">DataFrame.attrs</span></code></a>.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"A"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">flags</span>
+<span class="go">&lt;Flags(allows_duplicate_labels=True)&gt;</span>
+</pre></div>
+</div>
+<p>Flags can be get or set using <code class="docutils literal notranslate"><span class="pre">.</span></code></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">allows_duplicate_labels</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">allows_duplicate_labels</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<p>Or by slicing with a key</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">flags</span><span class="p">[</span><span class="s2">"allows_duplicate_labels"</span><span class="p">]</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">flags</span><span class="p">[</span><span class="s2">"allows_duplicate_labels"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+</article>
+<footer class="prev-next-footer">
+<div class="prev-next-area">
+<a class="left-prev" href="pandas.Series.name.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">pandas.Series.name</p>
+</div>
+</a>
+<a class="right-next" href="pandas.Series.set_flags.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">pandas.Series.set_flags</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>

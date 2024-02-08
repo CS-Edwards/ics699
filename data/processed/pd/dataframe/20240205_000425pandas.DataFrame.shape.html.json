@@ -1,0 +1,1 @@
+"{'name': 'pandas.DataFrame.shape', 'api_name': 'pandas.DataFrame.shape', 'description': 'Return a tuple representing the dimensionality of the DataFrame.', 'parameters': {'required': [], 'optional': []}}"

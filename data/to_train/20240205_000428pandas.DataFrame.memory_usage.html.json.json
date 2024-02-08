@@ -1,0 +1,24 @@
+{
+    "Instruction": "To retrieve the memory usage of each column in bytes in a DataFrame, use the DataFrame.memory_usage function.",
+    "Function": {
+      "name": "DataFrame.memory_usage",
+      "api_name": "DataFrame.memory_usage",
+      "description": "Return the memory usage of each column in bytes. The memory usage can optionally include the contribution of the index and elements of object dtype. This value is displayed in DataFrame.info by default. This can be suppressed by setting pandas.options.display.memory_usage to False.",
+      "parameters": {
+        "optional": [
+          {
+            "name": "index",
+            "description": "Specifies whether to include the memory usage of the DataFrame's index in returned Series. If index=True, the memory usage of the index is the first item in the output.",
+            "data_type": "bool"
+          },
+          {
+            "name": "deep",
+            "description": "If True, introspect the data deeply by interrogating object dtypes for system-level memory consumption, and include it in the returned values.",
+            "data_type": "bool"
+          }
+        ]
+      }
+    },
+    "Output": "DataFrame.memory_usage()"
+  }
+  

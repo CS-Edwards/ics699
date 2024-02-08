@@ -1,0 +1,99 @@
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">API reference</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../frame.html">DataFrame</a></li>
+<li aria-current="page" class="breadcrumb-item active">pandas.DataF...</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="pandas-dataframe-items">
+<h1>pandas.DataFrame.items<a class="headerlink" href="#pandas-dataframe-items" title="Link to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="pandas.DataFrame.items">
+<span class="sig-prename descclassname"><span class="pre">DataFrame.</span></span><span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v2.2.0/pandas/core/frame.py#L1484-L1491"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.DataFrame.items" title="Link to this definition">#</a></dt>
+<dd><p>Iterate over (column name, Series) pairs.</p>
+<p>Iterates over the DataFrame columns, returning a tuple with
+the column name and the content as a Series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Yields<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>label</strong><span class="classifier">object</span></dt><dd><p>The column names for the DataFrame being iterated over.</p>
+</dd>
+<dt><strong>content</strong><span class="classifier">Series</span></dt><dd><p>The column entries belonging to each label, as a Series.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="pandas.DataFrame.iterrows.html#pandas.DataFrame.iterrows" title="pandas.DataFrame.iterrows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame.iterrows</span></code></a></dt><dd><p>Iterate over DataFrame rows as (index, Series) pairs.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.DataFrame.itertuples.html#pandas.DataFrame.itertuples" title="pandas.DataFrame.itertuples"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame.itertuples</span></code></a></dt><dd><p>Iterate over DataFrame rows as namedtuples of the values.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'species'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'bear'</span><span class="p">,</span> <span class="s1">'bear'</span><span class="p">,</span> <span class="s1">'marsupial'</span><span class="p">],</span>
+<span class="gp">... </span>                  <span class="s1">'population'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1864</span><span class="p">,</span> <span class="mi">22000</span><span class="p">,</span> <span class="mi">80000</span><span class="p">]},</span>
+<span class="gp">... </span>                  <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">'panda'</span><span class="p">,</span> <span class="s1">'polar'</span><span class="p">,</span> <span class="s1">'koala'</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">        species   population</span>
+<span class="go">panda   bear      1864</span>
+<span class="go">polar   bear      22000</span>
+<span class="go">koala   marsupial 80000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">content</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'label: </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'content: </span><span class="si">{</span><span class="n">content</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">label: species</span>
+<span class="go">content:</span>
+<span class="go">panda         bear</span>
+<span class="go">polar         bear</span>
+<span class="go">koala    marsupial</span>
+<span class="go">Name: species, dtype: object</span>
+<span class="go">label: population</span>
+<span class="go">content:</span>
+<span class="go">panda     1864</span>
+<span class="go">polar    22000</span>
+<span class="go">koala    80000</span>
+<span class="go">Name: population, dtype: int64</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+</article>
+<footer class="prev-next-footer">
+<div class="prev-next-area">
+<a class="left-prev" href="pandas.DataFrame.__iter__.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">pandas.DataFrame.__iter__</p>
+</div>
+</a>
+<a class="right-next" href="pandas.DataFrame.keys.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">pandas.DataFrame.keys</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>

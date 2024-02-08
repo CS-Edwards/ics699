@@ -1,0 +1,94 @@
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">API reference</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../frame.html">DataFrame</a></li>
+<li aria-current="page" class="breadcrumb-item active">pandas.DataFrame.pop</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="pandas-dataframe-pop">
+<h1>pandas.DataFrame.pop<a class="headerlink" href="#pandas-dataframe-pop" title="Link to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="pandas.DataFrame.pop">
+<span class="sig-prename descclassname"><span class="pre">DataFrame.</span></span><span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v2.2.0/pandas/core/frame.py#L5765-L5806"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.DataFrame.pop" title="Link to this definition">#</a></dt>
+<dd><p>Return item and drop from frame. Raise KeyError if not found.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>item</strong><span class="classifier">label</span></dt><dd><p>Label of column to be popped.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>Series</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([(</span><span class="s1">'falcon'</span><span class="p">,</span> <span class="s1">'bird'</span><span class="p">,</span> <span class="mf">389.0</span><span class="p">),</span>
+<span class="gp">... </span>                   <span class="p">(</span><span class="s1">'parrot'</span><span class="p">,</span> <span class="s1">'bird'</span><span class="p">,</span> <span class="mf">24.0</span><span class="p">),</span>
+<span class="gp">... </span>                   <span class="p">(</span><span class="s1">'lion'</span><span class="p">,</span> <span class="s1">'mammal'</span><span class="p">,</span> <span class="mf">80.5</span><span class="p">),</span>
+<span class="gp">... </span>                   <span class="p">(</span><span class="s1">'monkey'</span><span class="p">,</span> <span class="s1">'mammal'</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)],</span>
+<span class="gp">... </span>                  <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'class'</span><span class="p">,</span> <span class="s1">'max_speed'</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">     name   class  max_speed</span>
+<span class="go">0  falcon    bird      389.0</span>
+<span class="go">1  parrot    bird       24.0</span>
+<span class="go">2    lion  mammal       80.5</span>
+<span class="go">3  monkey  mammal        NaN</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">'class'</span><span class="p">)</span>
+<span class="go">0      bird</span>
+<span class="go">1      bird</span>
+<span class="go">2    mammal</span>
+<span class="go">3    mammal</span>
+<span class="go">Name: class, dtype: object</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">     name  max_speed</span>
+<span class="go">0  falcon      389.0</span>
+<span class="go">1  parrot       24.0</span>
+<span class="go">2    lion       80.5</span>
+<span class="go">3  monkey        NaN</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+</article>
+<footer class="prev-next-footer">
+<div class="prev-next-area">
+<a class="left-prev" href="pandas.DataFrame.itertuples.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">pandas.DataFrame.itertuples</p>
+</div>
+</a>
+<a class="right-next" href="pandas.DataFrame.tail.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">pandas.DataFrame.tail</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>

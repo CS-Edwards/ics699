@@ -1,0 +1,127 @@
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">API reference</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../series.html">Series</a></li>
+<li aria-current="page" class="breadcrumb-item active">pandas.Series.diff</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="pandas-series-diff">
+<h1>pandas.Series.diff<a class="headerlink" href="#pandas-series-diff" title="Link to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="pandas.Series.diff">
+<span class="sig-prename descclassname"><span class="pre">Series.</span></span><span class="sig-name descname"><span class="pre">diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">periods</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v2.2.0/pandas/core/series.py#L3025-L3113"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.Series.diff" title="Link to this definition">#</a></dt>
+<dd><p>First discrete difference of element.</p>
+<p>Calculates the difference of a Series element compared with another
+element in the Series (default is element in previous row).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>periods</strong><span class="classifier">int, default 1</span></dt><dd><p>Periods to shift for calculating difference, accepts negative
+values.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>Series</dt><dd><p>First differences of the Series.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="pandas.Series.pct_change.html#pandas.Series.pct_change" title="pandas.Series.pct_change"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series.pct_change</span></code></a></dt><dd><p>Percent change over given number of periods.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.Series.shift.html#pandas.Series.shift" title="pandas.Series.shift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series.shift</span></code></a></dt><dd><p>Shift index by desired number of periods with an optional time freq.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.DataFrame.diff.html#pandas.DataFrame.diff" title="pandas.DataFrame.diff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame.diff</span></code></a></dt><dd><p>First discrete difference of object.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>For boolean dtypes, this uses <code class="xref py py-meth docutils literal notranslate"><span class="pre">operator.xor()</span></code> rather than
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">operator.sub()</span></code>.
+The result is calculated according to current dtype in Series,
+however dtype of the result is always float64.</p>
+<p class="rubric">Examples</p>
+<p>Difference with previous row</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span>
+<span class="go">0    NaN</span>
+<span class="go">1    0.0</span>
+<span class="go">2    1.0</span>
+<span class="go">3    1.0</span>
+<span class="go">4    2.0</span>
+<span class="go">5    3.0</span>
+<span class="go">dtype: float64</span>
+</pre></div>
+</div>
+<p>Difference with 3rd previous row</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">periods</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">0    NaN</span>
+<span class="go">1    NaN</span>
+<span class="go">2    NaN</span>
+<span class="go">3    2.0</span>
+<span class="go">4    4.0</span>
+<span class="go">5    6.0</span>
+<span class="go">dtype: float64</span>
+</pre></div>
+</div>
+<p>Difference with following row</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">periods</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">0    0.0</span>
+<span class="go">1   -1.0</span>
+<span class="go">2   -1.0</span>
+<span class="go">3   -2.0</span>
+<span class="go">4   -3.0</span>
+<span class="go">5    NaN</span>
+<span class="go">dtype: float64</span>
+</pre></div>
+</div>
+<p>Overflow in input dtype</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span>
+<span class="go">0      NaN</span>
+<span class="go">1    255.0</span>
+<span class="go">dtype: float64</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+</article>
+<footer class="prev-next-footer">
+<div class="prev-next-area">
+<a class="left-prev" href="pandas.Series.describe.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">pandas.Series.describe</p>
+</div>
+</a>
+<a class="right-next" href="pandas.Series.factorize.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">pandas.Series.factorize</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>

@@ -1,0 +1,118 @@
+
+class Schema:
+    """
+    Schema class used to interact and manipulate schemas or classes.
+
+    Attributes
+    ----------
+    property : weaviate.schema.properties.Property
+        A Property object to create new schema property/ies.
+    """
+
+    def __init__(self, connection: Connection):
+        """
+        Initialize a Schema class instance.
+
+        Parameters
+        ----------
+        connection : weaviate.connect.Connection
+            Connection object to an active and running Weaviate instance.
+        """
+
+        self._connection = connection
+        self.property = Property(self._connection)
+
+
+
+
+
+def get(self, class_name: Optional[str] = None) -> dict:
+        """
+        Get the schema from Weaviate.
+
+        Parameters
+        ----------
+        class_name : str, optional
+            The class for which to return the schema. If NOT provided the whole schema is returned,
+            otherwise only the schema of this class is returned. By default None.
+
+        Returns
+        -------
+        dict
+            A dict containing the schema. The schema may be empty.
+            To see if a schema has already been loaded, use the `contains` method.
+
+        Examples
+        --------
+        No schema present in client
+
+        >>> client.schema.get()
+        {'classes': []}
+
+        Schema present in client
+
+        >>> client.schema.get()
+        {
+            "classes": [
+                {
+                "class": "Animal",
+                "description": "An Animal",
+                "invertedIndexConfig": {
+                    "cleanupIntervalSeconds": 60
+                },
+                "properties": [
+                    {
+                    "dataType": ["text"],
+                    "description": "The animal type",
+                    "name": "type"
+                    }
+                ],
+                "vectorIndexConfig": {
+                    "cleanupIntervalSeconds": 300,
+                    "maxConnections": 64,
+                    "efConstruction": 128,
+                    "vectorCacheMaxObjects": 500000
+                },
+                "vectorIndexType": "hnsw",
+                "vectorizer": "text2vec-contextionary",
+                "replicationConfig": {
+                    "factor": 1
+                }
+                }
+            ]
+        }
+
+        >>> client.schema.get('Animal')
+        {
+            "class": "Animal",
+            "description": "An Animal",
+            "invertedIndexConfig": {
+                "cleanupIntervalSeconds": 60
+            },
+            "properties": [
+                {
+                "dataType": ["text"],
+                "description": "The animal type",
+                "name": "type"
+                }
+            ],
+            "vectorIndexConfig": {
+                "cleanupIntervalSeconds": 300,
+                "maxConnections": 64,
+                "efConstruction": 128,
+                "vectorCacheMaxObjects": 500000
+            },
+            "vectorIndexType": "hnsw",
+            "vectorizer": "text2vec-contextionary",
+            "replicationConfig": {
+                "factor": 1
+            }
+        }
+
+        Raises
+        ------
+        requests.ConnectionError
+            If the network connection to Weaviate fails.
+        weaviate.UnexpectedStatusCodeException
+            If Weaviate reports a non-OK status.
+        """

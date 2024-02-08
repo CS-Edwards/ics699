@@ -1,0 +1,142 @@
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">API reference</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../frame.html">DataFrame</a></li>
+<li aria-current="page" class="breadcrumb-item active">pandas.DataF...</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="pandas-dataframe-select-dtypes">
+<h1>pandas.DataFrame.select_dtypes<a class="headerlink" href="#pandas-dataframe-select-dtypes" title="Link to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="pandas.DataFrame.select_dtypes">
+<span class="sig-prename descclassname"><span class="pre">DataFrame.</span></span><span class="sig-name descname"><span class="pre">select_dtypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v2.2.0/pandas/core/frame.py#L4939-L5080"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.DataFrame.select_dtypes" title="Link to this definition">#</a></dt>
+<dd><p>Return a subset of the DataFrameâs columns based on the column dtypes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>include, exclude</strong><span class="classifier">scalar or list-like</span></dt><dd><p>A selection of dtypes or strings to be included/excluded. At least
+one of these parameters must be supplied.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>DataFrame</dt><dd><p>The subset of the frame including the dtypes in <code class="docutils literal notranslate"><span class="pre">include</span></code> and
+excluding the dtypes in <code class="docutils literal notranslate"><span class="pre">exclude</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ValueError</dt><dd><ul class="simple">
+<li><p>If both of <code class="docutils literal notranslate"><span class="pre">include</span></code> and <code class="docutils literal notranslate"><span class="pre">exclude</span></code> are empty</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">include</span></code> and <code class="docutils literal notranslate"><span class="pre">exclude</span></code> have overlapping elements</p></li>
+<li><p>If any kind of string dtype is passed in.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="pandas.DataFrame.dtypes.html#pandas.DataFrame.dtypes" title="pandas.DataFrame.dtypes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame.dtypes</span></code></a></dt><dd><p>Return Series with the data type of each column.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>To select all <em>numeric</em> types, use <code class="docutils literal notranslate"><span class="pre">np.number</span></code> or <code class="docutils literal notranslate"><span class="pre">'number'</span></code></p></li>
+<li><p>To select strings you must use the <code class="docutils literal notranslate"><span class="pre">object</span></code> dtype, but note that
+this will return <em>all</em> object dtype columns</p></li>
+<li><p>See the <a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html">numpy dtype hierarchy</a></p></li>
+<li><p>To select datetimes, use <code class="docutils literal notranslate"><span class="pre">np.datetime64</span></code>, <code class="docutils literal notranslate"><span class="pre">'datetime'</span></code> or
+<code class="docutils literal notranslate"><span class="pre">'datetime64'</span></code></p></li>
+<li><p>To select timedeltas, use <code class="docutils literal notranslate"><span class="pre">np.timedelta64</span></code>, <code class="docutils literal notranslate"><span class="pre">'timedelta'</span></code> or
+<code class="docutils literal notranslate"><span class="pre">'timedelta64'</span></code></p></li>
+<li><p>To select Pandas categorical dtypes, use <code class="docutils literal notranslate"><span class="pre">'category'</span></code></p></li>
+<li><p>To select Pandas datetimetz dtypes, use <code class="docutils literal notranslate"><span class="pre">'datetimetz'</span></code>
+or <code class="docutils literal notranslate"><span class="pre">'datetime64[ns,</span> <span class="pre">tz]'</span></code></p></li>
+</ul>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'a'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s1">'b'</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="s1">'c'</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">        a      b  c</span>
+<span class="go">0       1   True  1.0</span>
+<span class="go">1       2  False  2.0</span>
+<span class="go">2       1   True  1.0</span>
+<span class="go">3       2  False  2.0</span>
+<span class="go">4       1   True  1.0</span>
+<span class="go">5       2  False  2.0</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s1">'bool'</span><span class="p">)</span>
+<span class="go">   b</span>
+<span class="go">0  True</span>
+<span class="go">1  False</span>
+<span class="go">2  True</span>
+<span class="go">3  False</span>
+<span class="go">4  True</span>
+<span class="go">5  False</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">'float64'</span><span class="p">])</span>
+<span class="go">   c</span>
+<span class="go">0  1.0</span>
+<span class="go">1  2.0</span>
+<span class="go">2  1.0</span>
+<span class="go">3  2.0</span>
+<span class="go">4  1.0</span>
+<span class="go">5  2.0</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="p">[</span><span class="s1">'int64'</span><span class="p">])</span>
+<span class="go">       b    c</span>
+<span class="go">0   True  1.0</span>
+<span class="go">1  False  2.0</span>
+<span class="go">2   True  1.0</span>
+<span class="go">3  False  2.0</span>
+<span class="go">4   True  1.0</span>
+<span class="go">5  False  2.0</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+</article>
+<footer class="prev-next-footer">
+<div class="prev-next-area">
+<a class="left-prev" href="pandas.DataFrame.info.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">pandas.DataFrame.info</p>
+</div>
+</a>
+<a class="right-next" href="pandas.DataFrame.values.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">pandas.DataFrame.values</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>

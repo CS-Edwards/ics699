@@ -1,0 +1,148 @@
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">API reference</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../series.html">Series</a></li>
+<li aria-current="page" class="breadcrumb-item active">pandas.Series.pipe</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="pandas-series-pipe">
+<h1>pandas.Series.pipe<a class="headerlink" href="#pandas-series-pipe" title="Link to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="pandas.Series.pipe">
+<span class="sig-prename descclassname"><span class="pre">Series.</span></span><span class="sig-name descname"><span class="pre">pipe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pandas-dev/pandas/blob/v2.2.0/pandas/core/generic.py#L6120-L6225"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pandas.Series.pipe" title="Link to this definition">#</a></dt>
+<dd><p>Apply chainable functions that expect Series or DataFrames.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>func</strong><span class="classifier">function</span></dt><dd><p>Function to apply to the Series/DataFrame.
+<code class="docutils literal notranslate"><span class="pre">args</span></code>, and <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> are passed into <code class="docutils literal notranslate"><span class="pre">func</span></code>.
+Alternatively a <code class="docutils literal notranslate"><span class="pre">(callable,</span> <span class="pre">data_keyword)</span></code> tuple where
+<code class="docutils literal notranslate"><span class="pre">data_keyword</span></code> is a string indicating the keyword of
+<code class="docutils literal notranslate"><span class="pre">callable</span></code> that expects the Series/DataFrame.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">iterable, optional</span></dt><dd><p>Positional arguments passed into <code class="docutils literal notranslate"><span class="pre">func</span></code>.</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">mapping, optional</span></dt><dd><p>A dictionary of keyword arguments passed into <code class="docutils literal notranslate"><span class="pre">func</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>the return type of <code class="docutils literal notranslate"><span class="pre">func</span></code>.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="pandas.DataFrame.apply.html#pandas.DataFrame.apply" title="pandas.DataFrame.apply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame.apply</span></code></a></dt><dd><p>Apply a function along input axis of DataFrame.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.DataFrame.map.html#pandas.DataFrame.map" title="pandas.DataFrame.map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame.map</span></code></a></dt><dd><p>Apply a function elementwise on a whole DataFrame.</p>
+</dd>
+<dt><a class="reference internal" href="pandas.Series.map.html#pandas.Series.map" title="pandas.Series.map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Series.map</span></code></a></dt><dd><p>Apply a mapping correspondence on a <a class="reference internal" href="pandas.Series.html#pandas.Series" title="pandas.Series"><code class="xref py py-class docutils literal notranslate"><span class="pre">Series</span></code></a>.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">.pipe</span></code> when chaining together functions that expect
+Series, DataFrames or GroupBy objects.</p>
+<p class="rubric">Examples</p>
+<p>Constructing a income DataFrame from a dictionary.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">8000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span> <span class="p">[</span><span class="mi">9500</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span> <span class="p">[</span><span class="mi">5000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'Salary'</span><span class="p">,</span> <span class="s1">'Others'</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">   Salary  Others</span>
+<span class="go">0    8000  1000.0</span>
+<span class="go">1    9500     NaN</span>
+<span class="go">2    5000  2000.0</span>
+</pre></div>
+</div>
+<p>Functions that perform tax reductions on an income DataFrame.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">subtract_federal_tax</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">df</span> <span class="o">*</span> <span class="mf">0.9</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">subtract_state_tax</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">rate</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">df</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">rate</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">subtract_national_insurance</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">rate</span><span class="p">,</span> <span class="n">rate_increase</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">new_rate</span> <span class="o">=</span> <span class="n">rate</span> <span class="o">+</span> <span class="n">rate_increase</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">df</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">new_rate</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Instead of writing</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">subtract_national_insurance</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">subtract_state_tax</span><span class="p">(</span><span class="n">subtract_federal_tax</span><span class="p">(</span><span class="n">df</span><span class="p">),</span> <span class="n">rate</span><span class="o">=</span><span class="mf">0.12</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">rate</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">rate_increase</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>  
+</pre></div>
+</div>
+<p>You can write</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">df</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">subtract_federal_tax</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">subtract_state_tax</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="mf">0.12</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">subtract_national_insurance</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">rate_increase</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">    Salary   Others</span>
+<span class="go">0  5892.48   736.56</span>
+<span class="go">1  6997.32      NaN</span>
+<span class="go">2  3682.80  1473.12</span>
+</pre></div>
+</div>
+<p>If you have a function that takes the data as (say) the second
+argument, pass a tuple indicating which keyword expects the
+data. For example, suppose <code class="docutils literal notranslate"><span class="pre">national_insurance</span></code> takes its data as <code class="docutils literal notranslate"><span class="pre">df</span></code>
+in the second argument:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">subtract_national_insurance</span><span class="p">(</span><span class="n">rate</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">rate_increase</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">new_rate</span> <span class="o">=</span> <span class="n">rate</span> <span class="o">+</span> <span class="n">rate_increase</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">df</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">new_rate</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">df</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">subtract_federal_tax</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">subtract_state_tax</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="mf">0.12</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="p">(</span><span class="n">subtract_national_insurance</span><span class="p">,</span> <span class="s1">'df'</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="n">rate</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="n">rate_increase</span><span class="o">=</span><span class="mf">0.02</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">    Salary   Others</span>
+<span class="go">0  5892.48   736.56</span>
+<span class="go">1  6997.32      NaN</span>
+<span class="go">2  3682.80  1473.12</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+</article>
+<footer class="prev-next-footer">
+<div class="prev-next-area">
+<a class="left-prev" href="pandas.Series.ewm.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">pandas.Series.ewm</p>
+</div>
+</a>
+<a class="right-next" href="pandas.Series.abs.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">pandas.Series.abs</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>

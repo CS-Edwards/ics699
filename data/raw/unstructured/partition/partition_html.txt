@@ -1,0 +1,44 @@
+@process_metadata()
+@add_metadata_with_filetype(FileType.HTML)
+def partition_html(
+    filename: Optional[str] = None,
+    file: Optional[IO[bytes]] = None,
+    text: Optional[str] = None,
+    url: Optional[str] = None,
+    encoding: Optional[str] = None,
+    include_page_breaks: bool = False,
+    include_metadata: bool = True,
+    headers: Dict[str, str] = {},
+    ssl_verify: bool = True,
+    parser: VALID_PARSERS = None,
+    html_assemble_articles: bool = False,
+    metadata_filename: Optional[str] = None,
+    **kwargs,
+) -> List[Element]:
+    """Partitions an HTML document into its constituent elements.
+
+    Parameters
+    ----------
+    filename
+        A string defining the target filename path.
+    file
+        A file-like object using "r" mode --> open(filename, "r").
+    text
+        The string representation of the HTML document.
+    url
+        The URL of a webpage to parse. Only for URLs that return an HTML document.
+    encoding
+        The encoding method used to decode the text input. If None, utf-8 will be used.
+    include_page_breaks
+        If True, includes page breaks at the end of each page in the document.
+    include_metadata
+        Optionally allows for excluding metadata from the output. Primarily intended
+        for when partition_html is called in other partition bricks (like partition_email)
+    headers
+        The headers to be used in conjunction with the HTTP request if URL is set.
+    ssl_verify
+        If the URL parameter is set, determines whether or not partition uses SSL verification
+        in the HTTP request.
+    parser
+        The parser to use for parsing the HTML document. If None, default parser will be used.
+    """

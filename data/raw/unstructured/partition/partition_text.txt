@@ -1,0 +1,33 @@
+@process_metadata()
+@add_metadata_with_filetype(FileType.TXT)
+def partition_text(
+    filename: Optional[str] = None,
+    file: Optional[IO[bytes]] = None,
+    text: Optional[str] = None,
+    encoding: Optional[str] = None,
+    paragraph_grouper: Optional[Callable[[str], str]] = None,
+    metadata_filename: Optional[str] = None,
+    include_metadata: bool = True,
+    max_partition: Optional[int] = 1500,
+    **kwargs,
+) -> List[Element]:
+    """Partitions an .txt documents into its constituent elements.
+    Parameters
+    ----------
+    filename
+        A string defining the target filename path.
+    file
+        A file-like object using "r" mode --> open(filename, "r").
+    text
+        The string representation of the .txt document.
+    encoding
+        The encoding method used to decode the text input. If None, utf-8 will be used.
+    paragrapher_grouper
+        A str -> str function for fixing paragraphs that are interrupted by line breaks
+        for formatting purposes.
+    include_metadata
+        Determines whether or not metadata is included in the output.
+    max_partition
+        The maximum number of characters to include in a partition. If None is passed,
+        no maximum is applied.
+    """
